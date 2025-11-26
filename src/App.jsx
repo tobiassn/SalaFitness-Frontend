@@ -1,12 +1,12 @@
 import './App.css'
+import Login from './components/Login'
 
 function App() {
 
   return (
     <>
-      <div style = {{textAlign: 'center',marginTop: '50px'}}>
-        <h1>Hello World!</h1>
-        <p>Frontend pentru aplicatie!!</p>
+      <div>
+        <Login />
       </div>
     </>
   )
