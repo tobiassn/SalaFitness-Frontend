@@ -6,11 +6,44 @@ function Login(){
     const [username, setUsername] = useState(''); 
     const [password, setPassword] = useState('');
 
-    const handleSubmit = (e) => {
-        e.preventDefault();//opresc reincarcarea paginii pentru a putea salva datele
-        console.log("Date de logare (Test):",username,password);//scriu in consola browserului pentru a testa
-        //aici o sa vina functia care trimite datele catre un api de backend pt autentificare
-        //onSubmit este asociat cu un buton de tip submit care face ca atunci cand se apasa login se apeleza functia handleSubmit pentru a prelua datele dupa ce e.prevent opreste reincarcarea paginii
+    //stochez mesajele de eroare pentru a le scrie si in interfata nu doar pentru alert
+    const [error, setError] = useState('');
+    const [isLoading, setIsLoading] = useState(false);
+
+   const handleSubmit = async (e) => {
+        e.preventDefault();
+        setError('');
+        setIsLoading(true);
+        try{
+            const response = await fetch('http://localhost:5000/api/login',{
+                method: 'POST',
+                headers: {
+                    'Content-Type':'application/json',
+                },
+                body: JSON.stringify({username,password}),
+            });
+
+            const data = await response.json();
+
+            if(response.status === 200){
+                console.log('Login reusit: ',data);
+                alert(`Autentificare reusita! Bun venit, ${data.user.username} (Rol: ${data.user.rol})`);
+            }
+            else if(response.status === 400 || response.status === 429){
+                setError(data.message);
+            }
+            else {
+                setError('A aparut o eroare neasteptata. Status : ' + response.status);
+            }
+        }
+        catch(error){
+            //esec de retea, docker sau nodejs oprit
+            console.error("Eroare de rețea:", error);
+            setError('Nu am putut contacta serverul. Asigura-te ca Backend-ul ruleaza.');
+        } finally {
+            setIsLoading(false); 
+        }
+        
     };
 
     return (
