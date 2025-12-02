@@ -1,0 +1,136 @@
+body{
+    background-image: url('/Images/background.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    margin: 0; 
+}
+
+.header.logo{
+    position: absolute;
+}
+
+.login-container{
+    min-height: 100vh;
+    margin: 0;
+    position: relative;
+}
+
+.login-card{
+    background: rgba(0,0,0,0.6);
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4); 
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-87%, -75%);
+    width: 300px;
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-card h2{
+    color:white;
+    text-align: center;
+    margin-top: 0; 
+    margin-bottom: 25px;
+    font-size: 2em;
+    font-family: 'Roboto', sans-serif; 
+    letter-spacing: 2px;
+}
+
+.login-card form{
+    width: 100%;
+}
+
+.form-group{
+    color:white;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.form-group label{
+    width: 100px;
+    margin-right: 10px;
+    text-align: right;
+}
+
+.button-group{
+    text-align: center;
+    margin-top: 30px;
+}
+
+.button-group button{
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    margin: 0px 5px;
+    transition: background-color 0.3s ease;
+}
+
+.login-btn{
+    background-color: rgb(176, 47, 47);
+    color: white;
+    border: 1px solid rgb(176, 47, 47);
+}
+
+.login-btn:hover{
+    background-color: rgb(140, 30, 30);
+}
+
+.register-btn{
+    background-color: transparent;
+    color: white;
+    border: 1px solid rgb(176, 47, 47);
+}
+
+.register-btn:hover{
+    background-color: rgba(176, 47, 47, 0.1);
+}
+
+.register-btn:active{
+   background-color: rgba(176, 47, 47, 0.2);
+   transform: translateY(2px);
+}
+
+.form-group input {
+    flex-grow: 1;
+    padding: 8px;
+    background-color: rgba(255, 255, 255, 0.95); 
+    border: 1px solid rgb(176, 47, 47);
+    border-radius: 4px;
+    color: #333; 
+}
+
+.form-group input:focus {
+    outline: none; 
+    box-shadow: 0 0 0 3px rgba(176, 47, 47, 0.5); 
+    border-color: rgb(220, 60, 60); 
+}
+
+.welcome-message{
+    position:  absolute;
+    color: white;
+    left: 65%;
+    top: 35%;
+    font-size: 5em;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    letter-spacing: 3px;
+}
+
+.top-left-logo{
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 100px;
+}
