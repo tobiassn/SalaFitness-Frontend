@@ -27,7 +27,14 @@ function Login(){
 
             if(response.status === 200){
                 console.log('Login reusit: ',data);
+                //o sa folosesc localStorage pentru a stoca access token ul
+                localStorage.setItem('accesToken',data.accessToken);//salvez pentru cereri viitoare
+                localStorage.setItem('user',JSON.stringify(data.user));//salvez datele convertite in text ca sa stiu cine e logat
                 alert(`Autentificare reusita! Bun venit, ${data.user.username} (Rol: ${data.user.rol})`);
+
+                //aici o sa vina dashboard ul
+                setUsername('');
+                setPassword('');//am resetat formularul
             }
             else if(response.status === 400 || response.status === 429){
                 setError(data.message);
