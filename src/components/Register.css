@@ -1,0 +1,87 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+.register-container{
+    background-image: url('/Images/background.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    margin: 0; 
+    position: relative;
+}
+
+.register-card{
+
+    background: rgba(0,0,0,0.6);
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-87%, -75%);
+    width: 300px;
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.register-card h2{
+
+    color:white;
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 25px;
+    font-size: 2em;
+    font-family: 'Roboto', sans-serif;
+    letter-spacing: 2px;
+
+}
+
+.create-account-btn {
+
+    background-color: rgb(176, 47, 47);
+    color: white;
+    border: 1px solid rgb(176, 47, 47);
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    width: 100%;
+    transition: background-color 0.3s ease;
+
+}
+
+.create-account-btn:hover {
+    background-color: rgb(140, 30, 30);
+}
+
+.create-account-btn:active {
+    transform: translateY(2px);
+}
+
+.create-account-btn:disabled {
+    background-color: #555;
+    border-color: #555;
+    cursor: not-allowed;
+}
+
+.switch-btn {
+    background: none;
+    border: none;
+    color: #ddd;
+    margin-top: 15px;
+    cursor: pointer;
+    text-decoration: underline;
+    font-size: 0.9em;
+}
+
+.switch-btn:hover {
+    color: white;
+}

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import './Login.css'
 
-function Login(){
+function Login({ onSwitchToRegister }){
 
     const [username, setUsername] = useState(''); 
     const [password, setPassword] = useState('');
@@ -90,13 +90,18 @@ function Login(){
                             />
                     </div>
                     <div className="button-group">
-                        <button type="submit" className="login-btn">
-                            Login
-                        </button>
-                        <button type="button" className="register-btn">
-                            Register
-                        </button>
-                    </div>
+                     <button type="submit" className="login-btn" disabled={isLoading}>
+                         {isLoading ? 'Se incarca...' : 'Login'}
+                    </button>
+                    <button 
+                        type="button"
+                        className="register-btn" 
+                        onClick={onSwitchToRegister} 
+                        disabled={isLoading}
+                    >
+                        Register
+                    </button>
+                </div>
 
                 </form>
             </div>
