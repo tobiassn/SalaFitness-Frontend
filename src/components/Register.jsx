@@ -13,6 +13,11 @@ function Register({ onSwitchToLogin }){//primesc o functie ca sa ma pot intoarce
     const [error, setError] = useState('');
     const [success, setSuccess] = useState('');
     const [isLoading, setIsLoading] = useState(false);
+    const [isMuted,setIsMuted] = useState(true);
+
+    const toggleMute = () => {//ca sa pornesc/opresc sunetul
+        setIsMuted(!isMuted);
+    };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -67,6 +72,15 @@ function Register({ onSwitchToLogin }){//primesc o functie ca sa ma pot intoarce
     return (
 
          <div className="register-container">
+            <video 
+                className="rp-video"
+                autoPlay 
+                loop 
+                muted={isMuted}
+                playsInline
+            >
+            <source src="/videos/dashboardVideo.mp4" type="video/mp4"/>
+            </video> 
             <img 
                 src="/Images/logo2.png"
                 alt = "Logo-ul salii" 
@@ -138,6 +152,9 @@ function Register({ onSwitchToLogin }){//primesc o functie ca sa ma pot intoarce
                             Ai deja cont? Logheaza-te aici
                         </button>
             </div>
+            <button className="mute-btn-rp" onClick={toggleMute}>
+                {isMuted ? "🔇" : "🔊"}
+            </button>
         </div>
     );
 

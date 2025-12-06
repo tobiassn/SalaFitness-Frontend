@@ -1,16 +1,31 @@
 body {
     margin: 0;
     padding: 0;
-    height: 100%;
+    overflow: hidden;
 }
 
 .login-container{
-    background-image: url('/Images/background.png');
     background-size: cover;
     background-repeat: no-repeat;
-    min-height: 100vh;
+    height: 100vh; 
+    overflow: hidden;
     margin: 0; 
     position: relative;
+    background-color: black;
+}
+
+.lp-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+    z-index: 0;
+    opacity: 0.6;
 }
 
 .login-card{
@@ -75,27 +90,27 @@ body {
 }
 
 .login-btn{
-    background-color: rgb(176, 47, 47);
+    background-color: rgb(47, 102, 111);
     color: white;
-    border: 1px solid rgb(176, 47, 47);
+    border: 1px solid rgb(47, 102, 111);
 }
 
 .login-btn:hover{
-    background-color: rgb(140, 30, 30);
+    background-color: rgb(33, 74, 81);
 }
 
 .register-btn{
     background-color: transparent;
     color: white;
-    border: 1px solid rgb(176, 47, 47);
+    border: 1px solid rgb(47, 102, 111);
 }
 
 .register-btn:hover{
-    background-color: rgba(176, 47, 47, 0.1);
+    background-color: rgb(20, 47, 51);
 }
 
 .register-btn:active{
-   background-color: rgba(176, 47, 47, 0.2);
+   background-color: rgb(20, 47, 51);
    transform: translateY(2px);
 }
 
@@ -103,15 +118,15 @@ body {
     flex-grow: 1;
     padding: 8px;
     background-color: rgba(255, 255, 255, 0.95); 
-    border: 1px solid rgb(176, 47, 47);
+    border: 1px solid rgb(32, 61, 89);
     border-radius: 4px;
     color: #333; 
 }
 
 .form-group input:focus {
     outline: none; 
-    box-shadow: 0 0 0 3px rgba(176, 47, 47, 0.5); 
-    border-color: rgb(220, 60, 60); 
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.7); 
+    border-color: rgb(32, 61, 89); 
 }
 
 .welcome-message{
@@ -121,7 +136,7 @@ body {
     top: 35%;
     font-size: 5em;
     font-weight: bold;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    text-shadow: 2px 2px 4px rgb(32, 61, 89);
     letter-spacing: 3px;
 }
 
@@ -130,4 +145,25 @@ body {
     top: 20px;
     left: 20px;
     width: 100px;
+}
+
+.mute-btn-lp {
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    background: rgba(0,0,0,0.5);
+    border: 1px solid white;
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mute-btn-lp:hover {
+    background: rgba(255, 255, 255, 0.3);
 }

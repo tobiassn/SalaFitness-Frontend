@@ -1,16 +1,31 @@
 body {
     margin: 0;
     padding: 0;
-    height: 100%;
+    overflow: hidden;
 }
 
 .register-container{
-    background-image: url('/Images/background.png');
     background-size: cover;
     background-repeat: no-repeat;
-    min-height: 100vh;
+    height: 100vh; 
+    overflow: hidden;
     margin: 0; 
     position: relative;
+    background-color: black;
+}
+
+.lp-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+    z-index: 0;
+    opacity: 0.6;
 }
 
 .register-card{
@@ -46,9 +61,9 @@ body {
 
 .create-account-btn {
 
-    background-color: rgb(176, 47, 47);
+    background-color: rgb(47, 102, 111);
     color: white;
-    border: 1px solid rgb(176, 47, 47);
+    border: 1px solid rgb(47, 102, 111);
     padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
@@ -59,7 +74,7 @@ body {
 }
 
 .create-account-btn:hover {
-    background-color: rgb(140, 30, 30);
+    background-color: rgb(33, 74, 81);
 }
 
 .create-account-btn:active {
@@ -84,4 +99,25 @@ body {
 
 .switch-btn:hover {
     color: white;
+}
+
+.mute-btn-rp {
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    background: rgba(0,0,0,0.5);
+    border: 1px solid white;
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mute-btn-rp:hover {
+    background: rgba(255, 255, 255, 0.3);
 }
