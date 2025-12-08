@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import './Login.css'
 
-function Login({ onSwitchToRegister,onLoginSuccess }){
+function Login({ onSwitchToRegister,onLoginSuccess,pressLogo }){
 
     const [username, setUsername] = useState(''); 
     const [password, setPassword] = useState('');
@@ -33,7 +33,7 @@ function Login({ onSwitchToRegister,onLoginSuccess }){
             if(response.status === 200){
                 console.log('Login reusit: ',data);
                 //o sa folosesc localStorage pentru a stoca access token ul
-                localStorage.setItem('accesToken',data.accessToken);//salvez pentru cereri viitoare
+                localStorage.setItem('accessToken',data.accessToken);//salvez pentru cereri viitoare
                 localStorage.setItem('user',JSON.stringify(data.user));//salvez datele convertite in text ca sa stiu cine e logat
 
                 if(onLoginSuccess){
@@ -73,17 +73,17 @@ function Login({ onSwitchToRegister,onLoginSuccess }){
             <img 
                 src="/Images/logo2.png"
                 alt = "Logo-ul salii" 
-                className="top-left-logo" 
+                className="login-top-left-logo" 
+                onClick={pressLogo}
             /> 
-            <div className="welcome-message">
-                WELCOME!
-            </div>
             <div className="login-card">
                 <h2>Autentificare</h2>
 
+                {error && <div className="login-error-message">{error}</div>}
+
                 <form onSubmit={handleSubmit}> 
 
-                    <div className="form-group">
+                    <div className="login-form-group">
                         <label>Username:</label>
                         <input
                             type = "text"
@@ -93,7 +93,7 @@ function Login({ onSwitchToRegister,onLoginSuccess }){
                             required
                         />
                     </div>
-                    <div className="form-group">
+                    <div className="login-form-group">
                         <label>Password:</label>
                             <input
                                 type="password"
@@ -103,7 +103,7 @@ function Login({ onSwitchToRegister,onLoginSuccess }){
                                 required
                             />
                     </div>
-                    <div className="button-group">
+                    <div className="login-button-group">
                      <button 
                         type="submit" 
                         className="login-btn" 
@@ -112,11 +112,11 @@ function Login({ onSwitchToRegister,onLoginSuccess }){
                     </button>
                     <button 
                         type="button"
-                        className="register-btn" 
+                        className="login-register-btn" 
                         onClick={onSwitchToRegister} 
                         disabled={isLoading}
                     >
-                        Register
+                        Nu ai cont? Inregistreaza-te aici
                     </button>
                 </div>
 

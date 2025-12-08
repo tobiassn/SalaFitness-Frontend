@@ -1,20 +1,15 @@
-body {
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-}
-
-.register-container{
-    background-size: cover;
-    background-repeat: no-repeat;
-    height: 100vh; 
-    overflow: hidden;
-    margin: 0; 
+.register-container {
     position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: black;
 }
 
-.lp-video {
+.rp-video {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -28,77 +23,149 @@ body {
     opacity: 0.6;
 }
 
-.register-card{
-
-    background: rgba(0,0,0,0.6);
+.register-card {
+    background: rgba(0, 0, 0, 0.7);
     padding: 40px;
-    border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-87%, -75%);
-    width: 300px;
-    min-height: 300px;
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+    position: relative;
+    z-index: 2;
+    width: 400px;
+    max-width: 90%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.register-card h2{
-
-    color:white;
+.register-card h2 {
+    color: white;
     text-align: center;
     margin-top: 0;
-    margin-bottom: 25px;
+    margin-bottom: 30px;
     font-size: 2em;
     font-family: 'Roboto', sans-serif;
     letter-spacing: 2px;
+    text-transform: uppercase;
+}
 
+.register-form-group {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.register-form-row {
+    display: flex;
+    gap: 15px;
+    width: 100%;
+}
+
+.register-form-group label {
+    display: block;
+    color: #ddd;
+    margin-bottom: 8px;
+    font-size: 0.9em;
+    text-align: left;
+    margin-left: 5px;
+}
+
+.register-form-group input {
+    width: 100%;
+    padding: 12px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 6px;
+    color: white;
+    font-size: 1em;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+}
+
+.register-form-group input:focus {
+    outline: none;
+    border-color: rgb(36, 110, 137);
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.register-button-group {
+    width: 100%;
+    margin-top: 10px;
 }
 
 .create-account-btn {
-
-    background-color: rgb(47, 102, 111);
+    background-color: rgb(51, 98, 164);
     color: white;
-    border: 1px solid rgb(47, 102, 111);
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
+    border: none;
+    padding: 12px;
+    font-size: 1.1em;
     font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
     width: 100%;
-    transition: background-color 0.3s ease;
-
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
 }
 
 .create-account-btn:hover {
-    background-color: rgb(33, 74, 81);
-}
-
-.create-account-btn:active {
-    transform: translateY(2px);
+    background-color: rgb(22, 77, 103);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgb(16, 57, 76);
 }
 
 .create-account-btn:disabled {
     background-color: #555;
-    border-color: #555;
     cursor: not-allowed;
+    transform: none;
 }
 
-.switch-btn {
-    background: none;
+.register-switch-btn {
+    background: transparent;
     border: none;
-    color: #ddd;
-    margin-top: 15px;
+    color: #ccc;
+    margin-top: 30px; 
     cursor: pointer;
-    text-decoration: underline;
-    font-size: 0.9em;
+    font-size: 0.95em;
+    transition: color 0.3s;
+    text-decoration: none;
+    font-family: 'Roboto', sans-serif;
 }
 
-.switch-btn:hover {
+.register-switch-btn:hover {
     color: white;
+    text-decoration: underline;
+}
+
+.register-top-left-logo {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 100px;
+    z-index: 10;
+    cursor: pointer;
+}
+
+.register-error-message {
+    color: #ffcccc;
+    background-color: rgba(160, 0, 0, 0.6);
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    width: 100%;
+    text-align: center;
+    border: 1px solid rgba(255, 0, 0, 0.3);
+}
+
+.register-success-message {
+    color: #ccffcc;
+    background-color: rgba(0, 100, 0, 0.6);
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    width: 100%;
+    text-align: center;
+    border: 1px solid rgba(0, 255, 0, 0.3);
 }
 
 .mute-btn-rp {

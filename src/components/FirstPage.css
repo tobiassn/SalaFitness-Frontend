@@ -1,0 +1,131 @@
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.firstpage-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    font-family: 'Roboto', sans-serif;
+}
+
+.firstpage-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+    z-index: 0;
+    opacity: 0.6;
+}
+
+.firstpage-nav {
+    position: absolute;
+    top: 20px;
+    right: 40px;
+    z-index: 10;
+}
+
+.firstpage-login-btn {
+    background: transparent;
+    border: 1px solid white;
+    color: white;
+    padding: 8px 20px;
+    font-weight: bold;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: all 0.3s;
+}
+
+.firstpage-login-btn:hover {
+    background: white;
+    color: black;
+}
+
+
+.firstpage-center {
+    position: absolute;
+    top: 35%; 
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 5;
+    color: white;
+    text-align: center;
+}
+
+.firstpage-center h2 {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 2em;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+}
+
+.firstpage-center h1 {
+    font-size: 3em;
+    margin: 0 0 40px 0;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+}
+
+.devino-membru-btn {
+    background: transparent;
+    border: 2px solid white;
+    color: white;
+    padding: 15px 40px;
+    font-size: 1.2em;
+    font-weight: bold;
+    border-radius: 50px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: all 0.3s;
+    margin-top: 50px;
+}
+
+.devino-membru-btn:hover {
+    background: white;
+    color: black;
+    transform: scale(1.05);
+}
+
+.firstpage-mute-btn {
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    background: rgba(0,0,0,0.5);
+    border: 1px solid white;
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.firstpage-mute-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.fp-top-left-logo {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 100px;
+    z-index: 10;
+    cursor: pointer;
+}

@@ -6,6 +6,7 @@ function Dashboard({onLogout}){
     const [user,setUser] = useState(null);
     const [isMuted,setIsMuted] = useState(true);
     const [showQR,setShowQR] = useState(false);
+    const [logoutConfirm,setLogoutConfirm] = useState(false);
 
     useEffect( () => {//iau informatiile despre user din localStorage, useEffect face asta o singura data datorita [] de la final
         const storedUser = localStorage.getItem('user');
@@ -25,6 +26,13 @@ function Dashboard({onLogout}){
          return user?.rol || 'Client'; //? daca returneaza null nu crapa programul
     };
 
+    const getDisplayName = () => {
+        if (user?.prenume && user.prenume !== '-') {
+            return user.prenume;
+        }
+        return 'ESTI ' + getUserRole();
+    };
+
     return(
         <div className="dashboard-container">
             <video 
@@ -40,41 +48,42 @@ function Dashboard({onLogout}){
             <img 
                 src="/Images/logo2.png"
                 alt = "Logo-ul salii" 
-                className="top-left-logo" 
+                className="db-top-left-logo" 
+                onClick={() => window.location.reload()}
             /> 
-            <nav className="navigation-bar">
-                <div className="navigation-buttons">
-                    <button className="nav-btn">
+            <nav className="db-navigation-bar">
+                <div className="db-navigation-buttons">
+                    <button className="db-nav-btn">
                         Acasa
                     </button>
-                    <button className="nav-btn">
+                    <button className="db-nav-btn">
                         Profilul meu
                     </button>
                     {getUserRole()==="Client" && (//butoane client
                         <>
-                            <button className="nav-btn">Abonamentele mele</button>
-                            <button className="nav-btn">Antrenorii nostri</button>
-                            <button className="nav-btn">Programarile mele</button>
+                            <button className="db-nav-btn">Abonamentele mele</button>
+                            <button className="db-nav-btn">Antrenorii nostri</button>
+                            <button className="db-nav-btn">Programarile mele</button>
                         </>
                     )}
                     {getUserRole()==="Trainer" &&(
                         <>
-                            <button className="nav-btn">Programarile mele</button>
+                            <button className="db-nav-btn">Programarile mele</button>
                         </>
                     )}
                     {getUserRole()==="Admin" &&(
                         <>
-                            <button className="nav-btn">Utilizatori</button>
+                            <button className="db-nav-btn">Utilizatori</button>
                         </>
                     )}
-                    <button className="nav-btn">Abonamente</button>
+                    <button className="db-nav-btn">Abonamente</button>
                 </div>
             </nav>
             <div className="dashboard-center">
                 <h2>BINE AI VENIT!</h2>
-                <h1>{user?.prenume.toUpperCase()}</h1>
+                <h1>{getDisplayName().toUpperCase()}</h1>
                 
-                <button className="access-card-btn" onClick={handleOpenQR}>
+                <button className="db-access-card-btn" onClick={handleOpenQR}>
                     Card Acces
                 </button>
                 
@@ -90,11 +99,22 @@ function Dashboard({onLogout}){
                     </div>
                 </div>
             )}
-
             </div>
-            <button className="mute-btn" onClick={toggleMute}>
+            <button className="db-mute-btn" onClick={toggleMute}>
                 {isMuted ? "🔇" : "🔊"}
             </button>
+            <button className="db-logout-btn" onClick={() => setLogoutConfirm(true)}>
+                ➜]
+            </button>
+            {logoutConfirm && (<div className="logout-content">
+                <p>Esti sigur ca vrei sa te deconectezi?</p>
+                <button className="logout-content-btn" onClick={onLogout}>
+                    DA
+                </button>
+                <button className="logout-content-btn" onClick={() => setLogoutConfirm(false)}>
+                    NU
+                </button>
+            </div>)}
         </div>
     );
 

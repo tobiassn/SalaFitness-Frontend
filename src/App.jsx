@@ -3,15 +3,11 @@ import "./App.css";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import Dashboard from "./components/Dashboard";
+import FirstPage from "./components/FirstPage";
 
 function App() {
   //stare pentru a tine minte ce pagina afisam ('login' sau 'register')
-  const [currentView, setCurrentView] = useState('login');
-
-  //Functie pentru a schimba pagina
-  const toggleView = () => {
-    setCurrentView(currentView === 'login' ? 'register' : 'login');
-  };
+  const [currentView, setCurrentView] = useState('firstPage');
 
   //verific la incarcare daca userul e deja logat
   useEffect(() => {
@@ -21,31 +17,43 @@ function App() {
     }
   }, []);
 
-  const handleLoginSuccess = () => {
-    setCurrentView('dashboard');
-  };
+  const goToLogin = () => setCurrentView('login');
+  const goToRegister = () => setCurrentView('register');
+  const goToDashboard = () => setCurrentView('dashboard');
+  const goToFirstPage = () => setCurrentView('firstPage'); 
 
   const handleLogout = () => {
     localStorage.removeItem('accessToken');
     localStorage.removeItem('user');
-    setCurrentView('login');
+    setCurrentView('firstPage');
   };
 
   return (
     <div>
+      {currentView === 'firstPage' && (
+        <FirstPage 
+            onNavigateToLogin={goToLogin} 
+            onNavigateToRegister={goToRegister} 
+        />
+      )}
+
       {currentView === 'login' && (
         <Login 
-            onSwitchToRegister={toggleView} 
-            onLoginSuccess={handleLoginSuccess} 
+            onSwitchToRegister={goToRegister} 
+            onLoginSuccess={goToDashboard} 
+            pressLogo={goToFirstPage}
         />
       )}
       
       {currentView === 'register' && (
-        <Register onSwitchToLogin={toggleView} />
+        <Register onSwitchToLogin={goToLogin} 
+         pressLogo={goToFirstPage}
+         />
       )}
 
       {currentView === 'dashboard' && (
-        <Dashboard onLogout={handleLogout} />
+        <Dashboard onLogout={handleLogout} 
+        />
       )}
     </div>
   );
