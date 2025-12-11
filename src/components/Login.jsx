@@ -28,7 +28,7 @@ function Login(){
             if(response.status === 200){
                 console.log('Login reusit: ',data);
                 //o sa folosesc localStorage pentru a stoca access token ul
-                localStorage.setItem('accesToken',data.accessToken);//salvez pentru cereri viitoare
+                localStorage.setItem('accessToken',data.accessToken);//salvez pentru cereri viitoare
                 localStorage.setItem('user',JSON.stringify(data.user));//salvez datele convertite in text ca sa stiu cine e logat
                 alert(`Autentificare reusita! Bun venit, ${data.user.username} (Rol: ${data.user.rol})`);
 
