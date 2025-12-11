@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import './Login.css'
 
-function Login(){
+function Login({ onSwitchToRegister }){
 
     const [username, setUsername] = useState(''); 
     const [password, setPassword] = useState('');
@@ -27,7 +27,14 @@ function Login(){
 
             if(response.status === 200){
                 console.log('Login reusit: ',data);
+                //o sa folosesc localStorage pentru a stoca access token ul
+                localStorage.setItem('accesToken',data.accessToken);//salvez pentru cereri viitoare
+                localStorage.setItem('user',JSON.stringify(data.user));//salvez datele convertite in text ca sa stiu cine e logat
                 alert(`Autentificare reusita! Bun venit, ${data.user.username} (Rol: ${data.user.rol})`);
+
+                //aici o sa vina dashboard ul
+                setUsername('');
+                setPassword('');//am resetat formularul
             }
             else if(response.status === 400 || response.status === 429){
                 setError(data.message);
@@ -83,13 +90,18 @@ function Login(){
                             />
                     </div>
                     <div className="button-group">
-                        <button type="submit" className="login-btn">
-                            Login
-                        </button>
-                        <button type="button" className="register-btn">
-                            Register
-                        </button>
-                    </div>
+                     <button type="submit" className="login-btn" disabled={isLoading}>
+                         {isLoading ? 'Se incarca...' : 'Login'}
+                    </button>
+                    <button 
+                        type="button"
+                        className="register-btn" 
+                        onClick={onSwitchToRegister} 
+                        disabled={isLoading}
+                    >
+                        Register
+                    </button>
+                </div>
 
                 </form>
             </div>
