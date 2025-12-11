@@ -1,0 +1,83 @@
+.auth-card{
+    background: rgba(0,0,0,0.6);
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4); 
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-87%, -75%);
+    width: 300px;
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.auth-card h2{
+    color:white;
+    text-align: center;
+    margin-top: 0; 
+    margin-bottom: 25px;
+    font-size: 2em;
+    font-family: 'Roboto', sans-serif; 
+    letter-spacing: 2px;
+}
+
+.login-card form{
+    width: 100%;
+}
+
+.form-group{
+    color:white;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.form-group label{
+    width: 100px;
+    margin-right: 10px;
+    text-align: right;
+}
+
+.form-group input {
+    flex-grow: 1;
+    padding: 8px;
+    background-color: rgba(255, 255, 255, 0.95); 
+    border: 1px solid rgb(32, 61, 89);
+    border-radius: 4px;
+    color: #333; 
+}
+
+.form-group input:focus {
+    outline: none; 
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.7); 
+    border-color: rgb(32, 61, 89); 
+}
+
+.error-message {
+    color: #ffcccc;
+    background-color: rgba(160, 0, 0, 0.6);
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    width: 100%;
+    text-align: center;
+    border: 1px solid rgba(255, 0, 0, 0.3);
+}
+
+.success-message {
+    color: #ccffcc;
+    background-color: rgba(0, 100, 0, 0.6);
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    width: 100%;
+    text-align: center;
+    border: 1px solid rgba(0, 255, 0, 0.3);
+}

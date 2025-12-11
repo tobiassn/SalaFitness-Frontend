@@ -6,22 +6,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: black;
+    background-color: transparent;
     font-family: 'Roboto', sans-serif;
-}
-
-.dashboard-video {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    min-width: 100%;
-    min-height: 100%;
-    width: auto;
-    height: auto;
-    transform: translate(-50%, -50%);
-    object-fit: cover;
-    z-index: 0;
-    opacity: 0.6;
 }
 
 .navigation-bar {
@@ -137,25 +123,4 @@
 @keyframes popIn {
     from { transform: scale(0.8); opacity: 0; }
     to { transform: scale(1); opacity: 1; }
-}
-
-.mute-btn {
-    position: absolute;
-    bottom: 30px;
-    right: 30px;
-    background: rgba(0,0,0,0.5);
-    border: 1px solid white;
-    color: white;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    cursor: pointer;
-    z-index: 10;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.mute-btn:hover {
-    background: rgba(255, 255, 255, 0.3);
 }

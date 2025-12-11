@@ -1,4 +1,5 @@
 import {useState} from 'react';
+import AuthLayout from './AuthLayout';
 import './Register.css'
 
 
@@ -13,11 +14,6 @@ function Register({ onSwitchToLogin }){//primesc o functie ca sa ma pot intoarce
     const [error, setError] = useState('');
     const [success, setSuccess] = useState('');
     const [isLoading, setIsLoading] = useState(false);
-    const [isMuted,setIsMuted] = useState(true);
-
-    const toggleMute = () => {//ca sa pornesc/opresc sunetul
-        setIsMuted(!isMuted);
-    };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -71,28 +67,12 @@ function Register({ onSwitchToLogin }){//primesc o functie ca sa ma pot intoarce
 
     return (
 
-         <div className="register-container">
-            <video 
-                className="rp-video"
-                autoPlay 
-                loop 
-                muted={isMuted}
-                playsInline
-            >
-            <source src="/videos/dashboardVideo.mp4" type="video/mp4"/>
-            </video> 
-            <img 
-                src="/Images/logo2.png"
-                alt = "Logo-ul salii" 
-                className="top-left-logo" 
-            /> 
-            <div className="welcome-message">
-                WELCOME!
-            </div>
-            <div className="register-card">
-                <h2>Inregistrare</h2>
+         <AuthLayout title = "Inregistrare">
 
                 <form onSubmit={handleSubmit}> 
+
+                    {error && <div className="error-message">{error}</div>}
+                    {success && <div className="succes-message">{success}</div>}
 
                     <div className="form-group">
                         <label>Username:</label>
@@ -151,11 +131,7 @@ function Register({ onSwitchToLogin }){//primesc o functie ca sa ma pot intoarce
                         <button className="switch-btn" onClick={onSwitchToLogin}>
                             Ai deja cont? Logheaza-te aici
                         </button>
-            </div>
-            <button className="mute-btn-rp" onClick={toggleMute}>
-                {isMuted ? "🔇" : "🔊"}
-            </button>
-        </div>
+        </AuthLayout>
     );
 
 };

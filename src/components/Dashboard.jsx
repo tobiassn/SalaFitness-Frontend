@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 import { QRCodeCanvas } from 'qrcode.react';
 import './Dashboard.css';
+import AppLayout from './AppLayout';
 
 function Dashboard({onLogout}){
     const [user,setUser] = useState(null);
-    const [isMuted,setIsMuted] = useState(true);
     const [showQR,setShowQR] = useState(false);
 
     useEffect( () => {//iau informatiile despre user din localStorage, useEffect face asta o singura data datorita [] de la final
@@ -14,10 +14,6 @@ function Dashboard({onLogout}){
         }
     },[]);
 
-    const toggleMute = () => {//ca sa pornesc/opresc sunetul
-        setIsMuted(!isMuted);
-    };
-
     const handleOpenQR = () => setShowQR(true);
     const handleCloseQR = () => setShowQR(false);//functii pentru a porni/inchide qrcode
 
@@ -26,22 +22,8 @@ function Dashboard({onLogout}){
     };
 
     return(
+        <AppLayout>
         <div className="dashboard-container">
-            <video 
-                className="dashboard-video"
-                autoPlay 
-                loop 
-                muted={isMuted} 
-                playsInline
-                preload="auto"
-            >
-            <source src = "/videos/dashboardVideo.mp4" type="video/mp4"/>
-            </video>
-            <img 
-                src="/Images/logo2.png"
-                alt = "Logo-ul salii" 
-                className="top-left-logo" 
-            /> 
             <nav className="navigation-bar">
                 <div className="navigation-buttons">
                     <button className="nav-btn">
@@ -92,10 +74,8 @@ function Dashboard({onLogout}){
             )}
 
             </div>
-            <button className="mute-btn" onClick={toggleMute}>
-                {isMuted ? "🔇" : "🔊"}
-            </button>
         </div>
+    </AppLayout>
     );
 
 };

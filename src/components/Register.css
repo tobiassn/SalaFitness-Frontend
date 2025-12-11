@@ -1,66 +1,4 @@
-body {
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-}
-
-.register-container{
-    background-size: cover;
-    background-repeat: no-repeat;
-    height: 100vh; 
-    overflow: hidden;
-    margin: 0; 
-    position: relative;
-    background-color: black;
-}
-
-.lp-video {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    min-width: 100%;
-    min-height: 100%;
-    width: auto;
-    height: auto;
-    transform: translate(-50%, -50%);
-    object-fit: cover;
-    z-index: 0;
-    opacity: 0.6;
-}
-
-.register-card{
-
-    background: rgba(0,0,0,0.6);
-    padding: 40px;
-    border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-87%, -75%);
-    width: 300px;
-    min-height: 300px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-
-}
-
-.register-card h2{
-
-    color:white;
-    text-align: center;
-    margin-top: 0;
-    margin-bottom: 25px;
-    font-size: 2em;
-    font-family: 'Roboto', sans-serif;
-    letter-spacing: 2px;
-
-}
-
 .create-account-btn {
-
     background-color: rgb(47, 102, 111);
     color: white;
     border: 1px solid rgb(47, 102, 111);
@@ -70,7 +8,6 @@ body {
     font-weight: bold;
     width: 100%;
     transition: background-color 0.3s ease;
-
 }
 
 .create-account-btn:hover {
@@ -99,25 +36,4 @@ body {
 
 .switch-btn:hover {
     color: white;
-}
-
-.mute-btn-rp {
-    position: absolute;
-    bottom: 30px;
-    right: 30px;
-    background: rgba(0,0,0,0.5);
-    border: 1px solid white;
-    color: white;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    cursor: pointer;
-    z-index: 10;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.mute-btn-rp:hover {
-    background: rgba(255, 255, 255, 0.3);
 }

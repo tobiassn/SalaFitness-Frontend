@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import AuthLayout from './AuthLayout';
 import './Login.css'
 
 function Login({ onSwitchToRegister,onLoginSuccess }){
@@ -9,11 +10,6 @@ function Login({ onSwitchToRegister,onLoginSuccess }){
     //stochez mesajele de eroare pentru a le scrie si in interfata nu doar pentru alert
     const [error, setError] = useState('');
     const [isLoading, setIsLoading] = useState(false);
-    const [isMuted,setIsMuted] = useState(true);
-
-    const toggleMute = () => {//ca sa pornesc/opresc sunetul
-        setIsMuted(!isMuted);
-    };
 
    const handleSubmit = async (e) => {
         e.preventDefault();
@@ -33,7 +29,7 @@ function Login({ onSwitchToRegister,onLoginSuccess }){
             if(response.status === 200){
                 console.log('Login reusit: ',data);
                 //o sa folosesc localStorage pentru a stoca access token ul
-                localStorage.setItem('accesToken',data.accessToken);//salvez pentru cereri viitoare
+                localStorage.setItem('accessToken',data.accessToken);//salvez pentru cereri viitoare
                 localStorage.setItem('user',JSON.stringify(data.user));//salvez datele convertite in text ca sa stiu cine e logat
 
                 if(onLoginSuccess){
@@ -60,29 +56,10 @@ function Login({ onSwitchToRegister,onLoginSuccess }){
 
     return (
         
-        <div className="login-container">
-            <video 
-                className="lp-video"
-                autoPlay 
-                loop 
-                muted={isMuted}
-                playsInline
-            >
-                <source src="/videos/dashboardVideo.mp4" type="video/mp4"/>
-            </video>
-            <img 
-                src="/Images/logo2.png"
-                alt = "Logo-ul salii" 
-                className="top-left-logo" 
-            /> 
-            <div className="welcome-message">
-                WELCOME!
-            </div>
-            <div className="login-card">
-                <h2>Autentificare</h2>
+        <AuthLayout title = "Autentificare">
+            <form onSubmit={handleSubmit}> 
 
-                <form onSubmit={handleSubmit}> 
-
+                    {error && <div className="error-message">{error}</div>}
                     <div className="form-group">
                         <label>Username:</label>
                         <input
@@ -119,13 +96,8 @@ function Login({ onSwitchToRegister,onLoginSuccess }){
                         Register
                     </button>
                 </div>
-
                 </form>
-            </div>
-            <button className="mute-btn-lp" onClick={toggleMute}>
-                {isMuted ? "🔇" : "🔊"}
-            </button>
-        </div>
+        </AuthLayout>
     );
 
 }
