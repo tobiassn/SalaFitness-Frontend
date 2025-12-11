@@ -1,6 +1,7 @@
 import {useState} from 'react';
 import AuthLayout from './AuthLayout';
 import './Register.css'
+import './AuthLayout.css'
 
 
 function Register({ onSwitchToLogin }){//primesc o functie ca sa ma pot intoarce la login
@@ -72,7 +73,7 @@ function Register({ onSwitchToLogin }){//primesc o functie ca sa ma pot intoarce
                 <form onSubmit={handleSubmit}> 
 
                     {error && <div className="error-message">{error}</div>}
-                    {success && <div className="succes-message">{success}</div>}
+                    {success && <div className="success-message">{success}</div>}
 
                     <div className="form-group">
                         <label>Username:</label>
