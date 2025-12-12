@@ -20,7 +20,6 @@ function App() {
   const goToLogin = () => setCurrentView('login');
   const goToRegister = () => setCurrentView('register');
   const goToDashboard = () => setCurrentView('dashboard');
-  const goToFirstPage = () => setCurrentView('firstPage'); 
 
   const handleLogout = () => {
     localStorage.removeItem('accessToken');
@@ -41,13 +40,11 @@ function App() {
         <Login 
             onSwitchToRegister={goToRegister} 
             onLoginSuccess={goToDashboard} 
-            pressLogo={goToFirstPage}
         />
       )}
       
       {currentView === 'register' && (
         <Register onSwitchToLogin={goToLogin} 
-         pressLogo={goToFirstPage}
          />
       )}
 

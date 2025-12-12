@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
+import AuthLayout from './AuthLayout';
 import './Login.css'
 
-function Login({ onSwitchToRegister,onLoginSuccess,pressLogo }){
+function Login({ onSwitchToRegister,onLoginSuccess }){
 
     const [username, setUsername] = useState(''); 
     const [password, setPassword] = useState('');
@@ -9,11 +10,6 @@ function Login({ onSwitchToRegister,onLoginSuccess,pressLogo }){
     //stochez mesajele de eroare pentru a le scrie si in interfata nu doar pentru alert
     const [error, setError] = useState('');
     const [isLoading, setIsLoading] = useState(false);
-    const [isMuted,setIsMuted] = useState(true);
-
-    const toggleMute = () => {//ca sa pornesc/opresc sunetul
-        setIsMuted(!isMuted);
-    };
 
    const handleSubmit = async (e) => {
         e.preventDefault();
@@ -59,31 +55,11 @@ function Login({ onSwitchToRegister,onLoginSuccess,pressLogo }){
     };
 
     return (
-        
-        <div className="login-container">
-            <video 
-                className="lp-video"
-                autoPlay 
-                loop 
-                muted={isMuted}
-                playsInline
-            >
-                <source src="/videos/dashboardVideo.mp4" type="video/mp4"/>
-            </video>
-            <img 
-                src="/Images/logo2.png"
-                alt = "Logo-ul salii" 
-                className="login-top-left-logo" 
-                onClick={pressLogo}
-            /> 
-            <div className="login-card">
-                <h2>Autentificare</h2>
+        <AuthLayout title = "Autentificare">
+            <form onSubmit={handleSubmit}> 
 
-                {error && <div className="login-error-message">{error}</div>}
-
-                <form onSubmit={handleSubmit}> 
-
-                    <div className="login-form-group">
+                    {error && <div className="error-message">{error}</div>}
+                    <div className="form-group">
                         <label>Username:</label>
                         <input
                             type = "text"
@@ -93,7 +69,7 @@ function Login({ onSwitchToRegister,onLoginSuccess,pressLogo }){
                             required
                         />
                     </div>
-                    <div className="login-form-group">
+                    <div className="form-group">
                         <label>Password:</label>
                             <input
                                 type="password"
@@ -103,7 +79,7 @@ function Login({ onSwitchToRegister,onLoginSuccess,pressLogo }){
                                 required
                             />
                     </div>
-                    <div className="login-button-group">
+                    <div className="button-group">
                      <button 
                         type="submit" 
                         className="login-btn" 
@@ -112,20 +88,15 @@ function Login({ onSwitchToRegister,onLoginSuccess,pressLogo }){
                     </button>
                     <button 
                         type="button"
-                        className="login-register-btn" 
+                        className="register-btn" 
                         onClick={onSwitchToRegister} 
                         disabled={isLoading}
                     >
                         Nu ai cont? Inregistreaza-te aici
                     </button>
                 </div>
-
                 </form>
-            </div>
-            <button className="mute-btn-lp" onClick={toggleMute}>
-                {isMuted ? "🔇" : "🔊"}
-            </button>
-        </div>
+        </AuthLayout>
     );
 
 }

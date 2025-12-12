@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 import { QRCodeCanvas } from 'qrcode.react';
 import './Dashboard.css';
+import AppLayout from './AppLayout';
 
 function Dashboard({onLogout}){
     const [user,setUser] = useState(null);
-    const [isMuted,setIsMuted] = useState(true);
     const [showQR,setShowQR] = useState(false);
     const [logoutConfirm,setLogoutConfirm] = useState(false);
 
@@ -14,10 +14,6 @@ function Dashboard({onLogout}){
             setUser(JSON.parse(storedUser));
         }
     },[]);
-
-    const toggleMute = () => {//ca sa pornesc/opresc sunetul
-        setIsMuted(!isMuted);
-    };
 
     const handleOpenQR = () => setShowQR(true);
     const handleCloseQR = () => setShowQR(false);//functii pentru a porni/inchide qrcode
@@ -34,23 +30,7 @@ function Dashboard({onLogout}){
     };
 
     return(
-        <div className="dashboard-container">
-            <video 
-                className="dashboard-video"
-                autoPlay 
-                loop 
-                muted={isMuted} 
-                playsInline
-                preload="auto"
-            >
-            <source src = "/videos/dashboardVideo.mp4" type="video/mp4"/>
-            </video>
-            <img 
-                src="/Images/logo2.png"
-                alt = "Logo-ul salii" 
-                className="db-top-left-logo" 
-                onClick={() => window.location.reload()}
-            /> 
+        <AppLayout>
             <nav className="db-navigation-bar">
                 <div className="db-navigation-buttons">
                     <button className="db-nav-btn">
@@ -100,9 +80,6 @@ function Dashboard({onLogout}){
                 </div>
             )}
             </div>
-            <button className="db-mute-btn" onClick={toggleMute}>
-                {isMuted ? "🔇" : "🔊"}
-            </button>
             <button className="db-logout-btn" onClick={() => setLogoutConfirm(true)}>
                 ➜]
             </button>
@@ -115,7 +92,7 @@ function Dashboard({onLogout}){
                     NU
                 </button>
             </div>)}
-        </div>
+    </AppLayout>
     );
 
 };

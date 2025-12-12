@@ -1,8 +1,10 @@
 import {useState} from 'react';
+import AuthLayout from './AuthLayout';
 import './Register.css'
+import './AuthLayout.css'
 
 
-function Register({ onSwitchToLogin,pressLogo }){//primesc o functie ca sa ma pot intoarce la login
+function Register({ onSwitchToLogin }){//primesc o functie ca sa ma pot intoarce la login
 
     const [username,setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -13,11 +15,6 @@ function Register({ onSwitchToLogin,pressLogo }){//primesc o functie ca sa ma po
     const [error, setError] = useState('');
     const [success, setSuccess] = useState('');
     const [isLoading, setIsLoading] = useState(false);
-    const [isMuted,setIsMuted] = useState(true);
-
-    const toggleMute = () => {//ca sa pornesc/opresc sunetul
-        setIsMuted(!isMuted);
-    };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -50,14 +47,14 @@ function Register({ onSwitchToLogin,pressLogo }){//primesc o functie ca sa ma po
                 setPrenume('');
                 setPassword('');
                 setConfirmPassword('');
-                alert(`Cont creat cu succes! Te poti loga acum.`);
-                if (onSwitchToLogin) {
-                    onSwitchToLogin();
-                }
+                setTimeout(() => {
+                    if (onSwitchToLogin) {
+                        onSwitchToLogin();
+                    }
+                }, 2000)
             }
             else if(response.status===400 || response.status===409){
                 setError(data.message);
-                console.error('Acest username este deja folosit sau parola nu contine minim 1 litera si 1 cifra!');
             }
             else{
                 setError('Eroare server: ' + response.status);
@@ -72,32 +69,15 @@ function Register({ onSwitchToLogin,pressLogo }){//primesc o functie ca sa ma po
     };
 
     return (
-
-         <div className="register-container">
-            <video 
-                className="rp-video"
-                autoPlay 
-                loop 
-                muted={isMuted}
-                playsInline
-            >
-            <source src="/videos/dashboardVideo.mp4" type="video/mp4"/>
-            </video> 
-            <img 
-                src="/Images/logo2.png"
-                alt = "Logo-ul salii" 
-                className="register-top-left-logo" 
-                onClick={pressLogo}
-            /> 
-            <div className="register-card">
-                <h2>Inregistrare</h2>
-
-                {error && <div className="register-error-message">{error}</div>}
-                {success && <div className="register-success-message">{success}</div>}
+         <AuthLayout title = "Inregistrare">
 
                 <form onSubmit={handleSubmit}> 
 
-                    <div className="register-form-group">
+                    {error && <div className="error-message">{error}</div>}
+                    {success && <div className="success-message">{success}</div>}
+
+                    <div className="form-group">
+
                         <label>Username:</label>
                         <input
                             type = "text"
@@ -108,7 +88,7 @@ function Register({ onSwitchToLogin,pressLogo }){//primesc o functie ca sa ma po
                         />
                     </div>
                     <div className="register-form-row">
-                        <div className="register-form-group">
+                        <div className="form-group">
                          <label>Nume:</label>
                                <input
                                     type="text"
@@ -118,7 +98,7 @@ function Register({ onSwitchToLogin,pressLogo }){//primesc o functie ca sa ma po
                                     required
                                 />
                         </div>
-                        <div className="register-form-group">
+                        <div className="form-group">
                             <label>Prenume:</label>
                                 <input
                                     type="text"
@@ -129,7 +109,7 @@ function Register({ onSwitchToLogin,pressLogo }){//primesc o functie ca sa ma po
                                 />
                         </div>
                     </div>
-                    <div className="register-form-group">
+                    <div className="form-group">
                         <label>Parola:</label>
                             <input
                                 type="password"
@@ -139,7 +119,7 @@ function Register({ onSwitchToLogin,pressLogo }){//primesc o functie ca sa ma po
                                 required
                             />
                     </div>
-                    <div className="register-form-group">
+                    <div className="form-group">
                         <label>Confirma Parola:</label>
                             <input
                                 type="password"
@@ -156,11 +136,7 @@ function Register({ onSwitchToLogin,pressLogo }){//primesc o functie ca sa ma po
                         <button className="register-switch-btn" onClick={onSwitchToLogin}>
                             Ai deja cont? Logheaza-te aici
                         </button>
-            </div>
-            <button className="mute-btn-rp" onClick={toggleMute}>
-                {isMuted ? "🔇" : "🔊"}
-            </button>
-        </div>
+        </AuthLayout>
     );
 
 };

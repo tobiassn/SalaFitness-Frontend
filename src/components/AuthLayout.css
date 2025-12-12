@@ -1,0 +1,81 @@
+.auth-card{
+    background: rgba(0, 0, 0, 0.7);
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+    position: relative;
+    z-index: 2;
+    width: 400px;
+    max-width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    
+}
+
+.auth-card h2{
+    color: white;
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 30px;
+    font-size: 2em;
+    font-family: 'Roboto', sans-serif;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.form-group{
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.form-group label{
+    display: block;
+    color: #ddd;
+    margin-bottom: 8px;
+    font-size: 0.9em;
+    text-align: left;
+    margin-left: 5px;;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 6px;
+    color: white;
+    font-size: 1em;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: rgb(51, 98, 164); 
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.error-message {
+    color: #ffcccc;
+    background-color: rgba(160, 0, 0, 0.6);
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    width: 100%;
+    text-align: center;
+    border: 1px solid rgba(255, 0, 0, 0.3);
+}
+
+.success-message {
+    color: #ccffcc;
+    background-color: rgba(0, 100, 0, 0.6);
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    width: 100%;
+    text-align: center;
+    border: 1px solid rgba(0, 255, 0, 0.3);
+}
