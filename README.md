@@ -11,14 +11,14 @@ npm install
 npm install
 ```
 
-API Configuration Target API URL:
-
+API Configuration
+Target API URL: 
 ```bash
 http://localhost:5001/api
 ```
 
-Running the Application To start the local development server and view the application in your browser:
-
+Running the Application
+To start the local development server and view the application in your browser:
 ```bash
 npm run dev
 ```
