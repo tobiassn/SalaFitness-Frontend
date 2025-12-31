@@ -1,87 +1,46 @@
-body {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-}
-
-.register-container{
-    background-image: url('/Images/background.png');
-    background-size: cover;
-    background-repeat: no-repeat;
-    min-height: 100vh;
-    margin: 0; 
-    position: relative;
-}
-
-.register-card{
-
-    background: rgba(0,0,0,0.6);
-    padding: 40px;
-    border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-87%, -75%);
-    width: 300px;
-    min-height: 300px;
+.register-form-row {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-
-}
-
-.register-card h2{
-
-    color:white;
-    text-align: center;
-    margin-top: 0;
-    margin-bottom: 25px;
-    font-size: 2em;
-    font-family: 'Roboto', sans-serif;
-    letter-spacing: 2px;
-
+    gap: 15px;
+    width: 100%;
 }
 
 .create-account-btn {
-
-    background-color: rgb(176, 47, 47);
+    background-color: rgb(51, 98, 164);
     color: white;
-    border: 1px solid rgb(176, 47, 47);
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
+    border: none;
+    padding: 12px;
+    font-size: 1.1em;
     font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
     width: 100%;
-    transition: background-color 0.3s ease;
-
 }
 
 .create-account-btn:hover {
-    background-color: rgb(140, 30, 30);
-}
-
-.create-account-btn:active {
-    transform: translateY(2px);
+    background-color: rgb(22, 77, 103);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgb(16, 57, 76);
 }
 
 .create-account-btn:disabled {
     background-color: #555;
-    border-color: #555;
     cursor: not-allowed;
+    transform: none;
 }
 
-.switch-btn {
-    background: none;
+.register-switch-btn {
+    background: transparent;
     border: none;
-    color: #ddd;
-    margin-top: 15px;
+    color: #ccc;
+    margin-top: 30px; 
     cursor: pointer;
-    text-decoration: underline;
-    font-size: 0.9em;
+    font-size: 0.95em;
+    transition: color 0.3s;
+    text-decoration: none;
+    font-family: 'Roboto', sans-serif;
 }
 
-.switch-btn:hover {
+.register-switch-btn:hover {
     color: white;
+    text-decoration: underline;
 }

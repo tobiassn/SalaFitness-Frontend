@@ -1,5 +1,7 @@
 import {useState} from 'react';
+import AuthLayout from './AuthLayout';
 import './Register.css'
+import './AuthLayout.css'
 
 
 function Register({ onSwitchToLogin }){//primesc o functie ca sa ma pot intoarce la login
@@ -45,12 +47,14 @@ function Register({ onSwitchToLogin }){//primesc o functie ca sa ma pot intoarce
                 setPrenume('');
                 setPassword('');
                 setConfirmPassword('');
-                console.log('V-ati inregistrat cu succes!');
-                alert(`Cont creat cu succes! Te poti loga acum.`);
+                setTimeout(() => {
+                    if (onSwitchToLogin) {
+                        onSwitchToLogin();
+                    }
+                }, 2000)
             }
             else if(response.status===400 || response.status===409){
                 setError(data.message);
-                console.error('Acest username este deja folosit sau parola nu contine minim 1 litera si 1 cifra!');
             }
             else{
                 setError('Eroare server: ' + response.status);
@@ -65,22 +69,15 @@ function Register({ onSwitchToLogin }){//primesc o functie ca sa ma pot intoarce
     };
 
     return (
-
-         <div className="register-container">
-            <img 
-                src="/Images/logo2.png"
-                alt = "Logo-ul salii" 
-                className="top-left-logo" 
-            /> 
-            <div className="welcome-message">
-                WELCOME!
-            </div>
-            <div className="register-card">
-                <h2>Inregistrare</h2>
+         <AuthLayout title = "Inregistrare">
 
                 <form onSubmit={handleSubmit}> 
 
+                    {error && <div className="error-message">{error}</div>}
+                    {success && <div className="success-message">{success}</div>}
+
                     <div className="form-group">
+
                         <label>Username:</label>
                         <input
                             type = "text"
@@ -90,25 +87,27 @@ function Register({ onSwitchToLogin }){//primesc o functie ca sa ma pot intoarce
                             required
                         />
                     </div>
-                    <div className="form-group">
-                        <label>Nume:</label>
-                            <input
-                                type="text"
-                                placeholder = "Introduceti numele"
-                                value = {nume}
-                                onChange={(e) => setNume(e.target.value)}
-                                required
-                            />
-                    </div>
-                    <div className="form-group">
-                        <label>Prenume:</label>
-                            <input
-                                type="text"
-                                placeholder = "Introduceti prenumele"
-                                value = {prenume}
-                                onChange={(e) => setPrenume(e.target.value)}
-                                required
-                            />
+                    <div className="register-form-row">
+                        <div className="form-group">
+                         <label>Nume:</label>
+                               <input
+                                    type="text"
+                                    placeholder = "Introduceti numele"
+                                    value = {nume}
+                                    onChange={(e) => setNume(e.target.value)}
+                                    required
+                                />
+                        </div>
+                        <div className="form-group">
+                            <label>Prenume:</label>
+                                <input
+                                    type="text"
+                                    placeholder = "Introduceti prenumele"
+                                    value = {prenume}
+                                    onChange={(e) => setPrenume(e.target.value)}
+                                    required
+                                />
+                        </div>
                     </div>
                     <div className="form-group">
                         <label>Parola:</label>
@@ -132,13 +131,12 @@ function Register({ onSwitchToLogin }){//primesc o functie ca sa ma pot intoarce
                     </div>
                         <button type="submit" className="create-account-btn" disabled={isLoading}>
                                 {isLoading ? 'Se proceseaza...' : 'Creeaza Cont'}
-                         </button>
+                        </button>
                  </form>
-                        <button className="switch-btn" onClick={onSwitchToLogin}>
+                        <button className="register-switch-btn" onClick={onSwitchToLogin}>
                             Ai deja cont? Logheaza-te aici
                         </button>
-            </div>
-        </div>
+        </AuthLayout>
     );
 
 };

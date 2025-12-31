@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import AuthLayout from './AuthLayout';
 import './Login.css'
 
-function Login({ onSwitchToRegister }){
+function Login({ onSwitchToRegister,onLoginSuccess }){
 
     const [username, setUsername] = useState(''); 
     const [password, setPassword] = useState('');
@@ -30,11 +31,11 @@ function Login({ onSwitchToRegister }){
                 //o sa folosesc localStorage pentru a stoca access token ul
                 localStorage.setItem('accessToken',data.accessToken);//salvez pentru cereri viitoare
                 localStorage.setItem('user',JSON.stringify(data.user));//salvez datele convertite in text ca sa stiu cine e logat
-                alert(`Autentificare reusita! Bun venit, ${data.user.username} (Rol: ${data.user.rol})`);
 
-                //aici o sa vina dashboard ul
-                setUsername('');
-                setPassword('');//am resetat formularul
+                if(onLoginSuccess){
+                    onLoginSuccess();
+                }
+
             }
             else if(response.status === 400 || response.status === 429){
                 setError(data.message);
@@ -54,21 +55,10 @@ function Login({ onSwitchToRegister }){
     };
 
     return (
-        
-        <div className="login-container">
-            <img 
-                src="/Images/logo2.png"
-                alt = "Logo-ul salii" 
-                className="top-left-logo" 
-            /> 
-            <div className="welcome-message">
-                WELCOME!
-            </div>
-            <div className="login-card">
-                <h2>Autentificare</h2>
+        <AuthLayout title = "Autentificare">
+            <form onSubmit={handleSubmit}> 
 
-                <form onSubmit={handleSubmit}> 
-
+                    {error && <div className="error-message">{error}</div>}
                     <div className="form-group">
                         <label>Username:</label>
                         <input
@@ -90,8 +80,11 @@ function Login({ onSwitchToRegister }){
                             />
                     </div>
                     <div className="button-group">
-                     <button type="submit" className="login-btn" disabled={isLoading}>
-                         {isLoading ? 'Se incarca...' : 'Login'}
+                     <button 
+                        type="submit" 
+                        className="login-btn" 
+                        disabled={isLoading}>
+                        {isLoading ? 'Se incarca...' : 'Login'}
                     </button>
                     <button 
                         type="button"
@@ -99,13 +92,11 @@ function Login({ onSwitchToRegister }){
                         onClick={onSwitchToRegister} 
                         disabled={isLoading}
                     >
-                        Register
+                        Nu ai cont? Inregistreaza-te aici
                     </button>
                 </div>
-
                 </form>
-            </div>
-        </div>
+        </AuthLayout>
     );
 
 }
