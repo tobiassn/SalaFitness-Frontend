@@ -171,3 +171,93 @@
 .db-logout-btn:hover {
     background: rgba(255, 255, 255, 0.3);
 }
+
+.db-nav-btn.active {
+    background-color: rgba(255, 255, 255, 0.465);
+    color: rgb(255, 255, 255);
+    transform: scale(1.05);
+}
+
+.fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+    width: 100%;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.history-view h2 {
+    color: white;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+}
+
+.history-table-container {
+    background: rgba(0, 0, 0, 0.6); 
+    border-radius: 15px;
+    padding: 20px;
+    backdrop-filter: blur(5px); 
+    max-height: 300px;
+    overflow-y: auto;
+    border: 1px solid rgba(255,255,255,0.2);
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.history-table {
+    width: 100%;
+    border-collapse: collapse;
+    color: white;
+}
+
+.history-table th {
+    text-align: left;
+    padding: 10px;
+    border-bottom: 1px solid rgba(255,255,255,0.3);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    color: #bbb;
+}
+
+.history-table td {
+    padding: 15px 10px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.plan-name {
+    font-weight: bold;
+    color: #3498db; 
+}
+
+.status-badge {
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.status-badge.active {
+    background-color: rgba(46, 204, 113, 0.2);
+    color: #2ecc71;
+    border: 1px solid #2ecc71;
+}
+
+.status-badge.expired {
+    background-color: rgba(231, 76, 60, 0.2);
+    color: #e74c3c; 
+    border: 1px solid #e74c3c;
+}
+
+.mini-cta-btn {
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #3498db;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+}
