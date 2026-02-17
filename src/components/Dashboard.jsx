@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react'; //import la useCallBack
 import { QRCodeCanvas } from 'qrcode.react';
 import './Dashboard.css';
 import AppLayout from './AppLayout';
@@ -12,6 +12,63 @@ function Dashboard({onLogout,onNavigateToSubscriptions}){
     const [mySubs, setMySubs] = useState([]); //Lista de abonamente
     const [loadingSubs, setLoadingSubs] = useState(false);
 
+    //folosesc autofetch care stie sa dea refresh singura
+    const authFetch = useCallback(async (url, options = {}) => {
+        let token = localStorage.getItem('accessToken');
+        
+        const headers = {
+            ...options.headers,
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+        };
+
+        //cerere normala
+        let response = await fetch(url, { ...options, headers });
+
+        //token expirat
+        if (response.status === 403 || response.status === 401) {
+            console.log("Token expirat detectat in authFetch. Incerc refresh");
+
+            try {
+                //incerc refresh
+                const refreshRes = await fetch('http://localhost:5001/api/refresh', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    credentials: 'include' //trimit si refresh cookie ul
+                });
+
+                if (refreshRes.ok) {
+                    const data = await refreshRes.json();
+                    const newToken = data.accessToken;
+                    
+                    localStorage.setItem('accessToken', newToken);
+                    console.log("Refresh reusit. Reincercam cererea initiala...");
+
+                    //refac cererea cu noul token
+                    const newHeaders = {
+                        ...options.headers,
+                        'Authorization': `Bearer ${newToken}`,
+                        'Content-Type': 'application/json'
+                    };
+                    response = await fetch(url, { ...options, headers: newHeaders });
+
+                } else {
+                    //daca a expirat refresh token ul logout
+                    console.error("Refresh token expirat.");
+                    onLogout();
+                    //returnez o eroare 
+                    return Promise.reject("Session expired"); 
+                }
+            } catch (err) {
+                console.error("Eroare retea la refresh.");
+                onLogout();
+                return Promise.reject(err);
+            }
+        }
+
+        return response;
+    }, [onLogout]);
+
     useEffect( () => {//iau informatiile despre user din localStorage, useEffect face asta o singura data datorita [] de la final
         const storedUser = localStorage.getItem('user');
         if(storedUser){
@@ -22,16 +79,21 @@ function Dashboard({onLogout,onNavigateToSubscriptions}){
     const fetchMyHistory = async () => {
         setLoadingSubs(true);
         try {
-            const token = localStorage.getItem('accessToken');
-            const response = await fetch('http://localhost:5001/api/subscriptions/my-history', {
-                headers: { 'Authorization': `Bearer ${token}` }
+            //folosesc authFetch in loc de fetch simplu
+            const response = await authFetch('http://localhost:5001/api/subscriptions/my-history', {
+                method: 'GET'
             });
-            const data = await response.json();
-            if (response.ok) {
+
+            //verific daca raspunsul e ok
+            if (response && response.ok) {
+                const data = await response.json();
                 setMySubs(data);
             }
         } catch (err) {
-            console.error("Eroare istoric:", err);
+            //ignor eroarea session expired ca e tratata in authFetch
+            if (err !== "Session expired") {
+                console.error("Eroare istoric:", err);
+            }
         } finally {
             setLoadingSubs(false);
         }
