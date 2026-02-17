@@ -4,6 +4,8 @@ import Login from "./components/Login";
 import Register from "./components/Register";
 import Dashboard from "./components/Dashboard";
 import FirstPage from "./components/FirstPage";
+import Trainers from "./components/Trainers";
+import MyAppointments from "./components/MyAppointments";
 
 function App() {
   //stare pentru a tine minte ce pagina afisam ('login' sau 'register')
@@ -20,6 +22,8 @@ function App() {
   const goToLogin = () => setCurrentView('login');
   const goToRegister = () => setCurrentView('register');
   const goToDashboard = () => setCurrentView('dashboard');
+  const goToTrainers = () => setCurrentView('trainers');
+  const goToAppointments = () => setCurrentView('appointments');
 
   const handleLogout = () => {
     localStorage.removeItem('accessToken');
@@ -49,8 +53,19 @@ function App() {
       )}
 
       {currentView === 'dashboard' && (
-        <Dashboard onLogout={handleLogout} 
+        <Dashboard 
+          onLogout={handleLogout} 
+          onNavigateToTrainers={goToTrainers}
+          onNavigateToAppointments={goToAppointments}
         />
+      )}
+      {currentView === 'trainers' && (
+        <Trainers 
+            onBack={goToDashboard} 
+        />
+      )}
+      {currentView === 'appointments' && ( 
+        <MyAppointments onBack={goToDashboard} />
       )}
     </div>
   );

@@ -3,7 +3,7 @@ import { QRCodeCanvas } from 'qrcode.react';
 import './Dashboard.css';
 import AppLayout from './AppLayout';
 
-function Dashboard({onLogout}){
+function Dashboard({onLogout,onNavigateToTrainers,onNavigateToAppointments}){
     const [user,setUser] = useState(null);
     const [showQR,setShowQR] = useState(false);
     const [logoutConfirm,setLogoutConfirm] = useState(false);
@@ -42,13 +42,19 @@ function Dashboard({onLogout}){
                     {getUserRole()==="Client" && (//butoane client
                         <>
                             <button className="db-nav-btn">Abonamentele mele</button>
-                            <button className="db-nav-btn">Antrenorii nostri</button>
-                            <button className="db-nav-btn">Programarile mele</button>
+                            <button className="db-nav-btn" onClick={onNavigateToTrainers}>
+                                Antrenorii nostri
+                            </button>
+                            <button className="db-nav-btn" onClick={onNavigateToAppointments}>
+                                Programarile mele
+                            </button>
                         </>
                     )}
                     {getUserRole()==="Trainer" &&(
                         <>
-                            <button className="db-nav-btn">Programarile mele</button>
+                            <button className="db-nav-btn" onClick={onNavigateToAppointments}>
+                                Programarile mele
+                            </button>
                         </>
                     )}
                     {getUserRole()==="Admin" &&(
