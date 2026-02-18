@@ -195,17 +195,24 @@
     color: white;
 }
 
-.back-btn {
-    background: transparent;
-    color: #bbb;
-    border: 1px solid #555;
-    padding: 8px 15px;
-    border-radius: 5px;
+.users-header .back-btn {
+    width: auto !important;        
+    flex: none !important;           
+    padding: 8px 25px !important;    
+    white-space: nowrap !important;   
+    background: rgba(255, 255, 255, 0.05) !important;
+    color: #bbb !important;
+    border: 1px solid #555 !important;
+    border-radius: 6px !important;
     cursor: pointer;
-    transition: all 0.3s;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
 }
 
-.back-btn:hover {
-    background: rgba(255, 255, 255, 0.1);
-    color: white;
+.users-header .back-btn:hover {
+    background: rgba(76, 175, 80, 0.1) !important; 
+    color: #fff !important;
+    border-color: #4CAF50 !important;
+    box-shadow: 0 0 8px rgba(76, 175, 80, 0.2);
 }
