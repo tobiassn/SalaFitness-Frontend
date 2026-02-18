@@ -3,7 +3,7 @@ import { QRCodeCanvas } from 'qrcode.react';
 import './Dashboard.css';
 import AppLayout from './AppLayout';
 
-function Dashboard({onLogout, onNavigateToProfile}){
+function Dashboard({onLogout}){
     const [user,setUser] = useState(null);
     const [showQR,setShowQR] = useState(false);
     const [logoutConfirm,setLogoutConfirm] = useState(false);
@@ -36,7 +36,7 @@ function Dashboard({onLogout, onNavigateToProfile}){
                     <button className="db-nav-btn">
                         Acasa
                     </button>
-                    <button className="db-nav-btn" onClick={onNavigateToProfile}>
+                    <button className="db-nav-btn">
                         Profilul meu
                     </button>
                     {getUserRole()==="Client" && (//butoane client
