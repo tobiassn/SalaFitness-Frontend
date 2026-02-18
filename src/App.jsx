@@ -4,7 +4,6 @@ import Login from "./components/Login";
 import Register from "./components/Register";
 import Dashboard from "./components/Dashboard";
 import FirstPage from "./components/FirstPage";
-import Subscriptions from "./components/Subscriptions";
 import AdminGymsManagement from "./components/AdminGymsManagement";
 import Profile from "./components/Profile";
 
@@ -23,16 +22,6 @@ function App() {
   const goToLogin = () => setCurrentView('login');
   const goToRegister = () => setCurrentView('register');
   const goToDashboard = () => setCurrentView('dashboard');
-  const goToSubscriptions = () => setCurrentView('subscriptions');
-
-  const handleBackFromSubscriptions = () => {
-    const token = localStorage.getItem('accessToken');
-      if (token) {
-        setCurrentView('dashboard');
-      } else {
-        setCurrentView('firstPage');
-      }
-  };
   const goToAdminGyms = () => setCurrentView('adminGyms');
   const goToProfile = () => setCurrentView('profile');
 
@@ -48,7 +37,6 @@ function App() {
         <FirstPage 
             onNavigateToLogin={goToLogin} 
             onNavigateToRegister={goToRegister} 
-            onNavigateToSubscriptions={goToSubscriptions}
         />
       )}
 
@@ -67,16 +55,9 @@ function App() {
       {currentView === 'dashboard' && (
         <Dashboard 
           onLogout={handleLogout} 
-          onNavigateToSubscriptions={goToSubscriptions}
           onNavigateToAdminGyms={goToAdminGyms}
           onNavigateToProfile={goToProfile}  
         />
-      )}
-      {currentView === 'subscriptions' && (
-        <Subscriptions 
-          onBack={handleBackFromSubscriptions} 
-          onNavigateToLogin={goToLogin} 
-          /> 
       )}
       {currentView === 'profile' && (
         <Profile 

@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import './FirstPage.css';
 import AppLayout from './AppLayout';
 
-function FirstPage({onNavigateToLogin,onNavigateToRegister,onNavigateToSubscriptions}){
+function FirstPage({onNavigateToLogin,onNavigateToRegister}){
 
     return (
         <AppLayout>
@@ -16,9 +16,6 @@ function FirstPage({onNavigateToLogin,onNavigateToRegister,onNavigateToSubscript
                 <h2>Incepe transformarea ta astazi</h2>
                 <button className="devino-membru-btn" onClick={onNavigateToRegister}>
                     DEVINO MEMBRU
-                </button>
-                <button className ="firstpage-abonamente-btn" onClick={onNavigateToSubscriptions}>
-                    VEZI ABONAMENTE
                 </button>
             </div>
         </AppLayout>
