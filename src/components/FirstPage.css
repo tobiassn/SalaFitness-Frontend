@@ -16,6 +16,26 @@
     transition: all 0.3s;
 }
 
+.firstpage-abonamente-btn{
+    background: transparent;
+    border: 2px solid white;
+    color: white;
+    padding: 15px 40px;
+    font-size: 0.9em;
+    font-weight: bold;
+    border-radius: 50px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: all 0.3s;
+    margin-top: 50px;
+}
+
+.firstpage-abonamente-btn:hover{
+    background: white;
+    color: black;
+    transform: scale(1.05);
+}
+
 .firstpage-login-btn:hover {
     background: white;
     color: black;
