@@ -5,6 +5,8 @@ import Register from "./components/Register";
 import Dashboard from "./components/Dashboard";
 import FirstPage from "./components/FirstPage";
 import Subscriptions from "./components/Subscriptions";
+import AdminGymsManagement from "./components/AdminGymsManagement";
+import Profile from "./components/Profile";
 
 function App() {
   //stare pentru a tine minte ce pagina afisam ('login' sau 'register')
@@ -31,6 +33,8 @@ function App() {
         setCurrentView('firstPage');
       }
   };
+  const goToAdminGyms = () => setCurrentView('adminGyms');
+  const goToProfile = () => setCurrentView('profile');
 
   const handleLogout = () => {
     localStorage.removeItem('accessToken');
@@ -64,6 +68,8 @@ function App() {
         <Dashboard 
           onLogout={handleLogout} 
           onNavigateToSubscriptions={goToSubscriptions}
+          onNavigateToAdminGyms={goToAdminGyms}
+          onNavigateToProfile={goToProfile}  
         />
       )}
       {currentView === 'subscriptions' && (
@@ -71,6 +77,19 @@ function App() {
           onBack={handleBackFromSubscriptions} 
           onNavigateToLogin={goToLogin} 
           /> 
+      )}
+      {currentView === 'profile' && (
+        <Profile 
+            onBackToDashboard={goToDashboard}
+            onLogout={handleLogout}
+        />
+      )}
+
+      {currentView === 'adminGyms' && (
+        <AdminGymsManagement 
+          onBackToDashboard={goToDashboard}
+          onLogout={handleLogout}
+       />
       )}
     </div>
   );

@@ -3,7 +3,7 @@ import { QRCodeCanvas } from 'qrcode.react';
 import './Dashboard.css';
 import AppLayout from './AppLayout';
 
-function Dashboard({onLogout,onNavigateToSubscriptions}){
+function Dashboard({onLogout, onNavigateToProfile,onNavigateToAdminGyms,onNavigateToSubscriptions}){
     const [user,setUser] = useState(null);
     const [showQR,setShowQR] = useState(false);
     const [logoutConfirm,setLogoutConfirm] = useState(false);
@@ -133,8 +133,7 @@ function Dashboard({onLogout,onNavigateToSubscriptions}){
                     >
                         Acasa
                     </button>
-
-                    <button className="db-nav-btn">
+                    <button className="db-nav-btn" onClick={onNavigateToProfile}>
                         Profilul meu
                     </button>
 
@@ -158,6 +157,7 @@ function Dashboard({onLogout,onNavigateToSubscriptions}){
                     {getUserRole()==="Admin" &&(
                         <>
                             <button className="db-nav-btn">Utilizatori</button>
+                            <button className="db-nav-btn" onClick={onNavigateToAdminGyms}>Administrare Sali</button>
                         </>
                     )}
                     <button className="db-nav-btn" onClick={onNavigateToSubscriptions}>Abonamente</button>
