@@ -1,0 +1,195 @@
+.subscriptions-container {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    padding: 100px 20px 40px 20px; 
+    box-sizing: border-box;
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    z-index: 1; 
+    background: transparent; 
+}
+
+.back-to-menu-btn {
+    position: absolute;
+    top: 30px;
+    right: 40px; 
+    background: transparent;
+    border: 2px solid white; 
+    color: white;
+    padding: 10px 25px;
+    font-weight: bold;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    z-index: 20;
+    border-radius: 50px; 
+}
+
+.back-to-menu-btn:hover {
+    background: white;
+    color: black;
+    transform: scale(1.05);
+}
+
+.plans-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding-bottom: 40px;
+}
+
+.plan-card {
+    background: rgb(255, 255, 255);
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    border: none;
+    min-height: 500px;
+}
+
+.plan-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 45px rgba(0,0,0,0.4);
+}
+
+.plan-card.featured {
+    border: 3px solid #3498db;
+    background: linear-gradient(to bottom right, #ffffff, #f0faff);
+}
+
+.plan-card.featured::after {
+    content: 'RECOMANDAT';
+    position: absolute;
+    top: -15px;
+    right: 20px;
+    background: #3498db;
+    color: white;
+    padding: 6px 15px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.card-header h3 {
+    font-size: 1.5rem;
+    color: #2c3e50;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.price-container {
+    margin-bottom: 20px;
+}
+
+.price {
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: #2c3e50;
+}
+
+.currency {
+    font-size: 1.2rem;
+    vertical-align: super;
+    font-weight: 600;
+}
+
+.duration {
+    display: block;
+    color: #7f8c8d;
+    font-size: 1rem;
+    margin-top: -5px;
+}
+
+.features-list {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+    margin: 30px 0;
+    flex-grow: 1;
+}
+
+.features-list li {
+    margin-bottom: 15px;
+    color: #444;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+}
+
+.check-icon {
+    color: #2ecc71;
+    margin-right: 12px;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.buy-btn {
+    width: 100%;
+    padding: 18px;
+    border: none;
+    border-radius: 10px;
+    background-color: #3498db;
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+}
+
+.buy-btn:hover {
+    background-color: #2980b9;
+    box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
+}
+
+.buy-btn.outline {
+    background-color: transparent;
+    border: 2px solid #3498db;
+    color: #3498db;
+}
+
+.buy-btn.outline:hover {
+    background-color: #3498db;
+    color: white;
+}
+
+.loading-spinner, .error-message {
+    color: white;
+    text-align: center;
+    margin-top: 100px;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+@media (max-width: 1250px) {
+    .plans-grid {
+        grid-template-columns: repeat(2, 1fr); 
+        max-width: 800px;
+    }
+}
+
+@media (max-width: 700px) {
+    .plans-grid {
+        grid-template-columns: 1fr;
+    }
+    .back-to-menu-btn {
+        position: relative;
+        right: auto;
+        top: auto;
+        margin-bottom: 30px;
+        display: inline-block;
+    }
+    .page-title {
+        font-size: 2rem;
+    }
+}

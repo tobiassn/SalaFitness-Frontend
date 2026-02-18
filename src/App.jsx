@@ -6,6 +6,9 @@ import Dashboard from "./components/Dashboard";
 import FirstPage from "./components/FirstPage";
 import Trainers from "./components/Trainers";
 import MyAppointments from "./components/MyAppointments";
+import Subscriptions from "./components/Subscriptions";
+import AdminGymsManagement from "./components/AdminGymsManagement";
+import Profile from "./components/Profile";
 
 function App() {
   //stare pentru a tine minte ce pagina afisam ('login' sau 'register')
@@ -24,6 +27,18 @@ function App() {
   const goToDashboard = () => setCurrentView('dashboard');
   const goToTrainers = () => setCurrentView('trainers');
   const goToAppointments = () => setCurrentView('appointments');
+  const goToSubscriptions = () => setCurrentView('subscriptions');
+
+  const handleBackFromSubscriptions = () => {
+    const token = localStorage.getItem('accessToken');
+      if (token) {
+        setCurrentView('dashboard');
+      } else {
+        setCurrentView('firstPage');
+      }
+  };
+  const goToAdminGyms = () => setCurrentView('adminGyms');
+  const goToProfile = () => setCurrentView('profile');
 
   const handleLogout = () => {
     localStorage.removeItem('accessToken');
@@ -37,6 +52,7 @@ function App() {
         <FirstPage 
             onNavigateToLogin={goToLogin} 
             onNavigateToRegister={goToRegister} 
+            onNavigateToSubscriptions={goToSubscriptions}
         />
       )}
 
@@ -57,6 +73,9 @@ function App() {
           onLogout={handleLogout} 
           onNavigateToTrainers={goToTrainers}
           onNavigateToAppointments={goToAppointments}
+          onNavigateToSubscriptions={goToSubscriptions}
+          onNavigateToAdminGyms={goToAdminGyms}
+          onNavigateToProfile={goToProfile}  
         />
       )}
       {currentView === 'trainers' && (
@@ -66,6 +85,25 @@ function App() {
       )}
       {currentView === 'appointments' && ( 
         <MyAppointments onBack={goToDashboard} />
+      )}
+      {currentView === 'subscriptions' && (
+        <Subscriptions 
+          onBack={handleBackFromSubscriptions} 
+          onNavigateToLogin={goToLogin} 
+          /> 
+      )}
+      {currentView === 'profile' && (
+        <Profile 
+            onBackToDashboard={goToDashboard}
+            onLogout={handleLogout}
+        />
+      )}
+
+      {currentView === 'adminGyms' && (
+        <AdminGymsManagement 
+          onBackToDashboard={goToDashboard}
+          onLogout={handleLogout}
+       />
       )}
     </div>
   );
