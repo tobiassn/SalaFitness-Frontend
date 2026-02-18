@@ -4,8 +4,6 @@ import Login from "./components/Login";
 import Register from "./components/Register";
 import Dashboard from "./components/Dashboard";
 import FirstPage from "./components/FirstPage";
-import Trainers from "./components/Trainers";
-import MyAppointments from "./components/MyAppointments";
 import Subscriptions from "./components/Subscriptions";
 import AdminGymsManagement from "./components/AdminGymsManagement";
 import Profile from "./components/Profile";
@@ -25,8 +23,6 @@ function App() {
   const goToLogin = () => setCurrentView('login');
   const goToRegister = () => setCurrentView('register');
   const goToDashboard = () => setCurrentView('dashboard');
-  const goToTrainers = () => setCurrentView('trainers');
-  const goToAppointments = () => setCurrentView('appointments');
   const goToSubscriptions = () => setCurrentView('subscriptions');
 
   const handleBackFromSubscriptions = () => {
@@ -71,20 +67,10 @@ function App() {
       {currentView === 'dashboard' && (
         <Dashboard 
           onLogout={handleLogout} 
-          onNavigateToTrainers={goToTrainers}
-          onNavigateToAppointments={goToAppointments}
           onNavigateToSubscriptions={goToSubscriptions}
           onNavigateToAdminGyms={goToAdminGyms}
           onNavigateToProfile={goToProfile}  
         />
-      )}
-      {currentView === 'trainers' && (
-        <Trainers 
-            onBack={goToDashboard} 
-        />
-      )}
-      {currentView === 'appointments' && ( 
-        <MyAppointments onBack={goToDashboard} />
       )}
       {currentView === 'subscriptions' && (
         <Subscriptions 
