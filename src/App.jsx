@@ -9,6 +9,7 @@ import MyAppointments from "./components/MyAppointments";
 import Subscriptions from "./components/Subscriptions";
 import AdminGymsManagement from "./components/AdminGymsManagement";
 import Profile from "./components/Profile";
+import LocationsMap from "./components/LocationsMap";
 
 function App() {
   //stare pentru a tine minte ce pagina afisam ('login' sau 'register')
@@ -28,6 +29,7 @@ function App() {
   const goToTrainers = () => setCurrentView('trainers');
   const goToAppointments = () => setCurrentView('appointments');
   const goToSubscriptions = () => setCurrentView('subscriptions');
+  const goToLocationsMap = () => setCurrentView('locationsMap');
 
   const handleBackFromSubscriptions = () => {
     const token = localStorage.getItem('accessToken');
@@ -76,6 +78,7 @@ function App() {
           onNavigateToSubscriptions={goToSubscriptions}
           onNavigateToAdminGyms={goToAdminGyms}
           onNavigateToProfile={goToProfile}  
+          onNavigateToLocationsMap={goToLocationsMap}
         />
       )}
       {currentView === 'trainers' && (
@@ -104,6 +107,12 @@ function App() {
           onBackToDashboard={goToDashboard}
           onLogout={handleLogout}
        />
+      )}
+      {currentView === 'locationsMap' && (
+        <LocationsMap 
+          onBackToDashboard={goToDashboard}
+          onLogout={handleLogout}
+        />
       )}
     </div>
   );

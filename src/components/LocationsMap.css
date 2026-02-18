@@ -1,0 +1,139 @@
+.locations-wrapper {
+    width: 95%;
+    max-width: 1300px;
+    margin: 30px auto;
+    height: 85vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.locations-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    background: rgba(30, 30, 30, 0.85);
+    padding: 15px 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+}
+
+.locations-header h2 {
+    margin: 0;
+    color: #4CAF50;
+    font-size: 1.8rem;
+}
+
+.locations-split-container {
+    display: flex;
+    flex: 1;
+    gap: 20px;
+    overflow: hidden; 
+}
+
+.locations-list-pane {
+    width: 35%;
+    background: rgba(30, 30, 30, 0.85);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    padding: 20px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+}
+
+.locations-list-pane::-webkit-scrollbar {
+    width: 6px;
+}
+.locations-list-pane::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+}
+.locations-list-pane::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+}
+
+.gym-list-card {
+    background: rgba(0, 0, 0, 0.4);
+    padding: 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    border-left: 4px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.gym-list-card:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.gym-list-card.active {
+    background: rgba(76, 175, 80, 0.15);
+    border-left: 4px solid #4CAF50;
+}
+
+.gym-list-card h3 {
+    margin: 0 0 8px 0;
+    color: white;
+    font-size: 1.2rem;
+}
+
+.gym-address {
+    margin: 0 0 5px 0;
+    color: #bbb;
+    font-size: 0.9rem;
+}
+
+.gym-desc {
+    margin: 0;
+    color: #888;
+    font-size: 0.85rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;         
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.locations-map-pane {
+    width: 65%;
+    border-radius: 12px;
+    overflow: hidden; 
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+}
+
+.leaflet-map-container {
+    width: 100%;
+    height: 100%;
+    z-index: 1; 
+}
+
+.leaflet-popup-content-wrapper {
+    border-radius: 8px;
+}
+
+.locations-header .back-btn {
+    width: auto !important;          
+    min-width: 100px !important;      
+    max-width: 250px !important;      
+    flex: none !important;         
+    padding: 10px 25px !important;    
+    background: rgba(255, 255, 255, 0.05) !important;
+    color: #fff !important;
+    border: 1px solid #555 !important;
+    border-radius: 8px !important;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    white-space: nowrap !important;
+}
+
+.locations-header .back-btn:hover {
+    background: rgba(76, 175, 80, 0.2) !important;
+    border-color: #4CAF50 !important;
+    box-shadow: 0 0 10px rgba(76, 175, 80, 0.3);
+}

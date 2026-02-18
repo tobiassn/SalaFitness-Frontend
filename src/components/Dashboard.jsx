@@ -3,7 +3,7 @@ import { QRCodeCanvas } from 'qrcode.react';
 import './Dashboard.css';
 import AppLayout from './AppLayout';
 
-function Dashboard({onLogout, onNavigateToProfile, onNavigateToAdminGyms, onNavigateToSubscriptions, onNavigateToTrainers, onNavigateToAppointments}){
+function Dashboard({onLogout, onNavigateToProfile, onNavigateToAdminGyms, onNavigateToSubscriptions, onNavigateToTrainers, onNavigateToAppointments,onNavigateToLocationsMap}){
     const [user, setUser] = useState(null);
     const [showQR, setShowQR] = useState(false);
     const [logoutConfirm, setLogoutConfirm] = useState(false);
@@ -117,6 +117,7 @@ function Dashboard({onLogout, onNavigateToProfile, onNavigateToAdminGyms, onNavi
                     >
                         Acasa
                     </button>
+                    <button className="db-nav-btn" onClick={onNavigateToLocationsMap}>Locatii Sali</button>
                     <button className="db-nav-btn" onClick={onNavigateToProfile}>
                         Profilul meu
                     </button>
