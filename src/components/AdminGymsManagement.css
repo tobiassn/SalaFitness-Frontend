@@ -1,0 +1,151 @@
+/* containerul principal */
+.gym-management-container {
+    display: flex;
+    gap: 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+    position: relative;
+    z-index: 10; 
+}
+
+/* coloana stanga - formular */
+.gym-form-section {
+    flex: 1;
+    background-color: #ffffff; 
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2); 
+    height: fit-content;
+    color: #333; 
+}
+
+/* coloana dreapta - lista */
+.gym-list-section {
+    flex: 1.5;
+    background-color: #ffffff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    max-height: 85vh;
+    overflow-y: auto;
+    color: #333;
+}
+
+/* inputs */
+.gym-input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+    background-color: #fff !important; 
+    color: #000 !important; 
+    box-sizing: border-box;
+}
+
+.gym-input:focus {
+    border-color: #4CAF50;
+    outline: none;
+    background-color: #fff;
+}
+
+.gym-form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #222; 
+}
+
+.gym-textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.add-facility-btn {
+    padding: 0 15px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.facilities-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 10px;
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    min-height: 45px;
+    margin-top: 5px;
+}
+
+.facility-tag {
+    background-color: #e0f2f1;
+    color: #00695c;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.9em;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid #b2dfdb;
+}
+
+.remove-tag-btn {
+    background: none;
+    border: none;
+    color: #d32f2f;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 1.2em;
+    padding: 0 4px;
+}
+
+.gym-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    color: #333;
+}
+
+.gym-table th {
+    text-align: left;
+    padding: 12px;
+    background-color: #f1f1f1;
+    border-bottom: 2px solid #ccc;
+    font-weight: bold;
+}
+
+.gym-table td {
+    padding: 12px;
+    border-bottom: 1px solid #eee;
+    background-color: white; 
+}
+
+.gym-row-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.action-btn {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    color: white;
+    font-size: 14px;
+}
+
+.edit-btn { background-color: #FFC107; color: #333; }
+.delete-btn { background-color: #FF5252; }
+
+@media (max-width: 900px) {
+    .gym-management-container {
+        flex-direction: column;
+    }
+}
