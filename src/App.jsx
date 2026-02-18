@@ -4,6 +4,7 @@ import Login from "./components/Login";
 import Register from "./components/Register";
 import Dashboard from "./components/Dashboard";
 import FirstPage from "./components/FirstPage";
+import AdminGymsManagement from "./components/AdminGymsManagement";
 import Profile from "./components/Profile";
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
   const goToLogin = () => setCurrentView('login');
   const goToRegister = () => setCurrentView('register');
   const goToDashboard = () => setCurrentView('dashboard');
+  const goToAdminGyms = () => setCurrentView('adminGyms');
   const goToProfile = () => setCurrentView('profile');
 
   const handleLogout = () => {
@@ -52,16 +54,23 @@ function App() {
 
       {currentView === 'dashboard' && (
         <Dashboard 
-            onLogout={handleLogout} 
-            onNavigateToProfile={goToProfile}  
+          onLogout={handleLogout} 
+          onNavigateToAdminGyms={goToAdminGyms}
+          onNavigateToProfile={goToProfile}  
         />
       )}
-
       {currentView === 'profile' && (
         <Profile 
             onBackToDashboard={goToDashboard}
             onLogout={handleLogout}
         />
+      )}
+
+      {currentView === 'adminGyms' && (
+        <AdminGymsManagement 
+          onBackToDashboard={goToDashboard}
+          onLogout={handleLogout}
+       />
       )}
     </div>
   );
