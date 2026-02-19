@@ -302,10 +302,8 @@ function AdminGymsManagement({ onBackToDashboard, onLogout }) {
                 <div className="gym-list-section">
                     <div style={{display:'flex', justifyContent:'space-between', alignItems:'center', marginBottom:'15px'}}>
                         <h2>Lista Sali ({gyms.length})</h2>
-                        <button onClick={onBackToDashboard} style={{
-                            padding:'8px 15px', background:'#2196F3', color:'white', border:'none', borderRadius:'5px', cursor:'pointer'
-                        }}>
-                            Inapoi
+                        <button onClick={onBackToDashboard} className="back-btn">
+                             ⬅ Inapoi
                         </button>
                     </div>
 

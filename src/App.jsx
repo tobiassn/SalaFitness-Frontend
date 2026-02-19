@@ -9,6 +9,7 @@ import MyAppointments from "./components/MyAppointments";
 import Subscriptions from "./components/Subscriptions";
 import AdminGymsManagement from "./components/AdminGymsManagement";
 import Profile from "./components/Profile";
+import AdminSubscriptionsManagement from './components/AdminSubscriptionsManagement';
 
 function App() {
   //stare pentru a tine minte ce pagina afisam ('login' sau 'register')
@@ -39,6 +40,7 @@ function App() {
   };
   const goToAdminGyms = () => setCurrentView('adminGyms');
   const goToProfile = () => setCurrentView('profile');
+  const goToAdminPlans = () => setCurrentView('adminPlans');
 
   const handleLogout = () => {
     localStorage.removeItem('accessToken');
@@ -76,6 +78,7 @@ function App() {
           onNavigateToSubscriptions={goToSubscriptions}
           onNavigateToAdminGyms={goToAdminGyms}
           onNavigateToProfile={goToProfile}  
+          onNavigateToAdminPlans={goToAdminPlans}
         />
       )}
       {currentView === 'trainers' && (
@@ -101,6 +104,12 @@ function App() {
 
       {currentView === 'adminGyms' && (
         <AdminGymsManagement 
+          onBackToDashboard={goToDashboard}
+          onLogout={handleLogout}
+       />
+      )}
+      {currentView === 'adminPlans' && (
+        <AdminSubscriptionsManagement
           onBackToDashboard={goToDashboard}
           onLogout={handleLogout}
        />
