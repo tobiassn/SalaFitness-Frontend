@@ -100,6 +100,33 @@ function LocationsMap({ onBackToDashboard, onLogout }) {
                                     <h3>{gym.nume}</h3>
                                     <p className="gym-address">📍 {gym.adresa}</p>
                                     <p className="gym-desc">{gym.descriere}</p>
+
+                                    <div className="gym-details-extra">
+                                        {/* Orar */}
+                                        {gym.opening_hours && Object.keys(gym.opening_hours).length > 0 && (
+                                            <div className="hours-section">
+                                                <span className="section-title">Orar:</span>
+                                                {Object.entries(gym.opening_hours).map(([zi, ore]) => (
+                                                    <div key={zi} className="hour-row">
+                                                        <span>{zi}:</span> <strong>{ore}</strong>
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        )}
+                                        
+                                        {/* Facilitati */}
+                                        {gym.facilities && gym.facilities.length > 0 && (
+                                            <div className="facilities-section">
+                                                <span className="section-title">Facilități:</span>
+                                                <div className="tags-container">
+                                                    {gym.facilities.map((fac, idx) => (
+                                                        <span key={idx} className="map-facility-tag">{fac}</span>
+                                                    ))}
+                                                </div>
+                                            </div>
+                                        )}
+                                    </div>
+
                                 </div>
                             ))
                         )}
@@ -134,18 +161,33 @@ function LocationsMap({ onBackToDashboard, onLogout }) {
                                         }}
                                     >
                                         <Popup>
-                                            <div style={{ textAlign: 'center' }}>
-                                                <strong style={{ fontSize: '1.1rem', color: '#333' }}>{gym.nume}</strong>
-                                                <br />
-                                                <span style={{ fontSize: '0.9rem', color: '#666' }}>{gym.adresa}</span>
-                                                <br />
+                                            <div className="map-popup-custom">
+                                                <strong>{gym.nume}</strong>
+                                                <div className="popup-address">📍 {gym.adresa}</div>
+                                                
+                                                {gym.opening_hours && Object.keys(gym.opening_hours).length > 0 && (
+                                                    <div className="popup-hours">
+                                                        {Object.entries(gym.opening_hours).map(([zi, ore]) => (
+                                                            <div key={zi}><b>{zi}:</b> {ore}</div>
+                                                        ))}
+                                                    </div>
+                                                )}
+
+                                                {gym.facilities && gym.facilities.length > 0 && (
+                                                    <div className="popup-facilities">
+                                                        {gym.facilities.map((fac, idx) => (
+                                                            <span key={idx} className="popup-tag">{fac}</span>
+                                                        ))}
+                                                    </div>
+                                                )}
+
                                                 <a 
-                                                    href={`https://www.google.com/maps/dir/?api=1&destination=${gym.latitude},${gym.longitude}`} 
+                                                    href={`https://www.google.com/maps?q=${gym.latitude},${gym.longitude}`} 
                                                     target="_blank" 
                                                     rel="noreferrer"
-                                                    style={{ display: 'inline-block', marginTop: '10px', padding: '5px 10px', background: '#2196F3', color: 'white', textDecoration: 'none', borderRadius: '4px' }}
+                                                    className="popup-google-btn"
                                                 >
-                                                    Deschide in Google Maps
+                                                     Deschide in Google Maps
                                                 </a>
                                             </div>
                                         </Popup>

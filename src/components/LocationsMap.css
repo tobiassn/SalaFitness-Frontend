@@ -137,3 +137,109 @@
     border-color: #4CAF50 !important;
     box-shadow: 0 0 10px rgba(76, 175, 80, 0.3);
 }
+
+.gym-details-extra {
+    margin-top: 15px;
+    padding-top: 12px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.85rem;
+}
+
+.section-title {
+    display: block;
+    color: #4CAF50;
+    margin-bottom: 8px;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+.hour-row {
+    display: flex;
+    justify-content: space-between;
+    color: #ccc;
+    margin-bottom: 4px;
+}
+
+.facilities-section {
+    margin-top: 12px;
+}
+
+.tags-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.map-facility-tag {
+    background: rgba(33, 150, 243, 0.15);
+    color: #64b5f6;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    border: 1px solid rgba(33, 150, 243, 0.3);
+}
+
+.map-popup-custom {
+    text-align: center;
+    min-width: 200px;
+}
+
+.map-popup-custom strong {
+    font-size: 1.15rem;
+    color: #333;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.popup-address {
+    font-size: 0.85rem;
+    color: #666;
+    margin-bottom: 10px;
+    border-bottom: 1px dashed #ccc;
+    padding-bottom: 8px;
+}
+
+.popup-hours {
+    text-align: left;
+    font-size: 0.8rem;
+    color: #444;
+    margin-bottom: 10px;
+    background: #f9f9f9;
+    padding: 6px;
+    border-radius: 4px;
+}
+
+.popup-facilities {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 4px;
+    margin-bottom: 12px;
+}
+
+.popup-tag {
+    background: #e0f2f1;
+    color: #00695c;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: bold;
+}
+
+.popup-google-btn {
+    display: block;
+    margin-top: 5px;
+    padding: 8px 12px;
+    background: #2196F3;
+    color: white !important; 
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    transition: background 0.2s;
+}
+
+.popup-google-btn:hover {
+    background: #1976d2;
+}
