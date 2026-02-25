@@ -137,6 +137,9 @@ const Subscriptions = ({ onBack, onNavigateToLogin }) => {
                             </div>
                             
                             <div className="card-body">
+                                {plan.description && (
+                                    <p className="plan-description">{plan.description}</p>
+                                )}
                                 <ul className="features-list">
                                     <li><span className="check-icon">✓</span> Acces complet la sala</li>
                                     <li><span className="check-icon">✓</span> Vestiar si dusuri incluse</li>

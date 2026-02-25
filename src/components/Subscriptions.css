@@ -34,11 +34,33 @@
 
 .plans-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); 
+    grid-auto-flow: column; 
+    grid-auto-columns: minmax(calc(25% - 15px), 280px); 
+    overflow-x: auto; 
     gap: 20px;
     max-width: 1400px;
     margin: 0 auto;
-    padding-bottom: 40px;
+    padding: 20px 10px 40px 10px; 
+    scroll-snap-type: x mandatory; 
+    scroll-behavior: smooth;
+    
+    position: relative; 
+    z-index: 10;        
+}
+
+.plans-grid::-webkit-scrollbar {
+    height: 10px;
+}
+.plans-grid::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1); 
+    border-radius: 10px;
+}
+.plans-grid::-webkit-scrollbar-thumb {
+    background: #3498db; 
+    border-radius: 10px;
+}
+.plans-grid::-webkit-scrollbar-thumb:hover {
+    background: #2980b9;
 }
 
 .plan-card {
@@ -53,6 +75,7 @@
     position: relative;
     border: none;
     min-height: 500px;
+    scroll-snap-align: center; 
 }
 
 .plan-card:hover {
@@ -171,16 +194,26 @@
     font-weight: bold;
 }
 
+.plan-description {
+    font-size: 0.95rem;
+    color: #555;
+    margin-bottom: 15px;
+    font-style: italic;
+    line-height: 1.5;
+    text-align: left;
+    border-bottom: 1px dashed #ddd; /* O linie subtila de separare */
+    padding-bottom: 15px;
+}
+
 @media (max-width: 1250px) {
     .plans-grid {
-        grid-template-columns: repeat(2, 1fr); 
-        max-width: 800px;
+        grid-auto-columns: calc(50% - 10px); 
     }
 }
 
 @media (max-width: 700px) {
     .plans-grid {
-        grid-template-columns: 1fr;
+        grid-auto-columns: 85%; 
     }
     .back-to-menu-btn {
         position: relative;
