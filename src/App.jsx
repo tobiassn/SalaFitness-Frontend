@@ -114,7 +114,7 @@ function App() {
           onLogout={handleLogout}
        />
       )}
-      {{currentView === 'adminPlans' && (
+      {currentView === 'adminPlans' && (
         <AdminSubscriptionsManagement
           onBackToDashboard={goToDashboard}
           onLogout={handleLogout}
