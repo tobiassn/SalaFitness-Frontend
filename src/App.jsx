@@ -116,6 +116,7 @@ function App() {
           onBackToDashboard={goToDashboard}
           onLogout={handleLogout}
         />
+      )}
       {currentView === 'adminUsers' && (
         <AdminUsersManagement 
           onBackToDashboard={goToDashboard}
