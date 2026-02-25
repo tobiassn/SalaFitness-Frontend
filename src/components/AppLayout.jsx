@@ -21,7 +21,7 @@ const AppLayout = ({children}) => {
                 <source src="/videos/dashboardVideo.mp4" type="video/mp4"/>
             </video>
             <img 
-                src="/Images/olympia_gym_logo.png"
+                src="/Images/gym_logo.png"
                 alt = "Logo-ul salii" 
                 className="top-left-logo" 
                 onClick={() => window.location.reload()}

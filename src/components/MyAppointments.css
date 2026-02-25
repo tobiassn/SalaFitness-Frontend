@@ -21,12 +21,25 @@
 }
 
 .back-btn {
-    background: #333;
-    color: white;
-    border: none;
-    padding: 8px 15px;
-    border-radius: 5px;
+    width: auto !important;
+    flex: none !important;
+    padding: 8px 20px !important;
+    background: rgba(255, 255, 255, 0.05) !important; 
+    color: #8b8b8b !important; 
+    border: 1px solid #555 !important; 
+    border-radius: 6px !important;
     cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    white-space: nowrap !important;
+}
+
+.back-btn:hover {
+    background: rgba(255, 255, 255, 0.1) !important;
+    color: #5c5c5c !important; /* Text alb curat la hover */
+    border-color: #888 !important;
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.1);
 }
 
 .section-title {
