@@ -9,7 +9,6 @@ import MyAppointments from "./components/MyAppointments";
 import Subscriptions from "./components/Subscriptions";
 import AdminGymsManagement from "./components/AdminGymsManagement";
 import Profile from "./components/Profile";
-import LocationsMap from "./components/LocationsMap";
 import AdminUsersManagement from "./components/AdminUsersManagement";
 
 function App() {
@@ -30,7 +29,6 @@ function App() {
   const goToTrainers = () => setCurrentView('trainers');
   const goToAppointments = () => setCurrentView('appointments');
   const goToSubscriptions = () => setCurrentView('subscriptions');
-  const goToLocationsMap = () => setCurrentView('locationsMap');
   const goToAdminUsers = () => setCurrentView('adminUsers');
 
   const handleBackFromSubscriptions = () => {
@@ -79,8 +77,7 @@ function App() {
           onNavigateToAppointments={goToAppointments}
           onNavigateToSubscriptions={goToSubscriptions}
           onNavigateToAdminGyms={goToAdminGyms}
-          onNavigateToProfile={goToProfile}  
-          onNavigateToLocationsMap={goToLocationsMap}
+          onNavigateToProfile={goToProfile}
           onNavigateToAdminUsers={goToAdminUsers}
         />
       )}
@@ -111,11 +108,6 @@ function App() {
           onLogout={handleLogout}
        />
       )}
-      {currentView === 'locationsMap' && (
-        <LocationsMap 
-          onBackToDashboard={goToDashboard}
-          onLogout={handleLogout}
-        />
       {currentView === 'adminUsers' && (
         <AdminUsersManagement 
           onBackToDashboard={goToDashboard}
