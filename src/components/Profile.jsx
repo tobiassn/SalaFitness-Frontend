@@ -20,6 +20,7 @@ function Profile({ onBackToDashboard, onLogout }) {
     const [role, setRole] = useState('Client');
     const [message, setMessage] = useState({ text: '', type: '' });
     const [isLoading, setIsLoading] = useState(false);
+    const [isDeleting, setIsDeleting] = useState(false);
 
     
     //folosesc autofetch care stie sa dea refresh singura o folosesc la useEffect si la handleSubmit
@@ -127,6 +128,34 @@ function Profile({ onBackToDashboard, onLogout }) {
         setPasswords({ ...passwords, [e.target.name]: e.target.value });
     };
 
+  const handleDeleteAccount = async () => {
+        setIsLoading(true); 
+        setMessage({ text: '', type: '' });
+
+        try {
+            const response = await authFetch('http://localhost:5001/api/profile', {
+                method: 'DELETE'
+            });
+
+            if (response && response.ok) {
+                setIsDeleting(false);
+                onLogout(); 
+            } else if (response) {
+                const data = await response.json();
+                setIsDeleting(false);
+                setMessage({ text: data.message || 'Eroare la stergerea contului.', type: 'error' });
+            }
+        } catch (err) {
+            if (err !== "Session expired") {
+                console.error("Eroare stergere cont:", err);
+                setIsDeleting(false);
+                setMessage({ text: 'Eroare de conexiune la server.', type: 'error' });
+            }
+        } finally {
+            setIsLoading(false);
+        }
+    };
+
     //salvez date cu autofetch
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -184,6 +213,18 @@ function Profile({ onBackToDashboard, onLogout }) {
         <AppLayout>
             <div className="profile-container">
                 <div className="profile-card">
+                    {isDeleting && (
+                        <div className="delete-modal-overlay">
+                            <div className="delete-modal-content">
+                                <h3>Esti absolut sigur?</h3>
+                                <p>Aceasta actiune este definitiva. Contul tau va fi sters, iar toate programarile viitoare vor fi anulate.</p>
+                                <div className="delete-modal-actions">
+                                    <button type="button" className="back-btn" onClick={() => setIsDeleting(false)}>Anuleaza</button>
+                                    <button type="button" className="acc-delete-btn confirm-delete" onClick={handleDeleteAccount}>Da, sterge contul</button>
+                                </div>
+                            </div>
+                        </div>
+                    )}
                     <h2>Profilul Meu</h2>
 
                     {message.text && (
@@ -248,6 +289,7 @@ function Profile({ onBackToDashboard, onLogout }) {
                         <div className="profile-actions">
                             <button type="button" className="back-btn" onClick={onBackToDashboard}>Inapoi</button>
                             <button type="submit" className="save-btn" disabled={isLoading}>{isLoading ? 'Se salveaza...' : 'Salveaza Modificari'}</button>
+                            <button type="button" className="acc-delete-btn" onClick={() => setIsDeleting(true)}>Sterge cont</button>
                         </div>
                     </form>
                 </div>
